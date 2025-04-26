@@ -1,0 +1,104 @@
+
+ yüklü kütüphenler
+
+ ses için
+-gtts
+-pyttsx3
+
+görüntü için
+-ultralytics
+opencv-python
+
+
+
+
+
+
+
+ Burada isie 3d modellieri çzidereigeim polşycamam image vermem lazım bende
+ imagfx ile resim çizidiyorum ve bunları promtu
+
+ 0. A futuristic holographic projection of a human figure standing.
+1. A holographic bicycle floating in mid-air with neon outlines.
+2. A sleek, holographic car model with glowing edges.
+3. A hologram of a motorcycle spinning slowly in space.
+4. A futuristic airplane hologram hovering above a platform.
+5. A neon-lit hologram of a public transport bus.
+6. A sci-fi style holographic train speeding forward.
+7. A heavy-duty holographic truck model with shining contours.
+8. A small boat in hologram form on shimmering water.
+9. A floating hologram of a traffic light cycling through colors.
+10. A holographic fire hydrant with animated light pulses.
+11. A holographic stop sign with dynamic glowing edges.
+12. A parking meter in soft blue holographic style.
+13. A minimalistic hologram of a park bench.
+14. A flying bird hologram with radiant feathers.
+15. A cute holographic cat curled up and glowing.
+16. A dynamic dog hologram wagging its tail.
+17. A galloping horse made of neon light lines.
+18. A fluffy sheep hologram gently moving.
+19. A robust cow hologram standing calmly.
+20. A giant elephant hologram with a transparent body.
+21. A roaring bear in full holographic glory.
+22. A holographic zebra with flowing striped lights.
+23. A towering giraffe hologram looking majestic.
+24. A small backpack hovering as a hologram.
+25. An umbrella hologram opening and closing slowly.
+26. A floating holographic handbag with sparkle effects.
+27. A professional holographic tie spinning mid-air.
+28. A neat suitcase hologram with detailed textures.
+29. A frisbee spinning holographically above ground.
+30. A pair of skis crossed in a holographic display.
+31. A neon snowboard floating and rotating.
+32. A sports ball hologram bouncing gently.
+33. A holographic kite flying with neon trails.
+34. A baseball bat hologram swinging through the air.
+35. A holographic baseball glove ready to catch.
+36. A floating skateboard hologram flipping slowly.
+37. A surfboard riding a holographic wave.
+38. A neon-lit tennis racket swinging softly.
+39. A transparent holographic bottle emitting light.
+40. A stylish wine glass hologram with reflective glows.
+41. A steaming cup hologram with animated vapor.
+42. A fork hologram spinning with metallic shine.
+43. A sharp-edged knife hologram with neon edges.
+44. A spoon hologram rotating on its axis.
+45. A bowl hologram with food particles floating.
+46. A banana hologram peeling itself slowly.
+47. A ripe apple hologram shimmering with red hues.
+48. A sandwich hologram assembling itself mid-air.
+49. An orange hologram splitting into slices.
+50. A broccoli hologram with pulsating green energy.
+51. A carrot hologram growing from digital soil.
+52. A sizzling hot dog hologram in a bun.
+53. A slice of pizza hologram with dripping cheese.
+54. A sweet donut hologram spinning gently.
+55. A glowing cake hologram with candles flickering.
+56. A chair hologram rotating on a platform.
+57. A cozy couch hologram inviting to sit.
+58. A holographic potted plant swaying softly.
+59. A soft bed hologram with dreamy outlines.
+60. A large dining table hologram with neon utensils.
+61. A holographic toilet with smooth, futuristic design.
+62. A TV screen hologram playing static animations.
+63. A laptop hologram booting up with glowing codes.
+64. A mouse hologram gliding smoothly across air.
+65. A remote control hologram with clickable buttons.
+66. A keyboard hologram with keys lighting up in sequence.
+67. A cell phone hologram receiving a call animation.
+68. A microwave hologram heating food visibly.
+69. A futuristic oven hologram baking bread.
+70. A toaster hologram launching holographic toast.
+71. A sink hologram flowing with blue water streams.
+72. A refrigerator hologram opening and showing food inside.
+73. A holographic book flipping its glowing pages.
+74. A clock hologram ticking slowly with neon hands.
+75. A holographic vase with floating flowers.
+76. A holographic scissors slowly opening and closing.
+77. A teddy bear hologram with a soft pulsing glow.
+78. A hair drier hologram blowing visible air streams.
+79. A toothbrush hologram scrubbing a transparent tooth.
+
+
+
+

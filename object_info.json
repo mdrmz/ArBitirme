@@ -1,0 +1,371 @@
+{
+  "objects": {
+    "person": {
+      "display_name": "İnsan",
+      "description": "Bir insan algılandı. Bu, bir birey veya bir grup olabilir.",
+      "extra_info": "Örnek: Yetişkin, çocuk, sporcu, vb."
+    },
+    "bicycle": {
+      "display_name": "Bisiklet",
+      "description": "Bir bisiklet algılandı.",
+      "extra_info": "Örnek: Dağ bisikleti, şehir bisikleti, yarış bisikleti, vb."
+    },
+    "car": {
+      "display_name": "Araba",
+      "description": "Bir motorlu kara taşıtı algılandı.",
+      "extra_info": "Örnek: Sedan, SUV, hatchback, vb."
+    },
+    "motorcycle": {
+      "display_name": "Motosiklet",
+      "description": "Bir motosiklet algılandı.",
+      "extra_info": "Örnek: Scooter, chopper, yarış motosikleti, vb."
+    },
+    "airplane": {
+      "display_name": "Uçak",
+      "description": "Bir uçak algılandı.",
+      "extra_info": "Örnek: Yolcu uçağı, savaş uçağı, küçük pervaneli uçak, vb."
+    },
+    "bus": {
+      "display_name": "Otobüs",
+      "description": "Bir otobüs algılandı.",
+      "extra_info": "Örnek: Şehir içi otobüs, tur otobüsü, okul otobüsü, vb."
+    },
+    "train": {
+      "display_name": "Tren",
+      "description": "Bir tren algılandı.",
+      "extra_info": "Örnek: Yük treni, yolcu treni, hızlı tren, vb."
+    },
+    "truck": {
+      "display_name": "Kamyon",
+      "description": "Bir kamyon algılandı.",
+      "extra_info": "Örnek: Tır, hafriyat kamyonu, küçük kamyonet, vb."
+    },
+    "boat": {
+      "display_name": "Tekne",
+      "description": "Bir tekne algılandı.",
+      "extra_info": "Örnek: Yelkenli, motorlu tekne, sandal, vb."
+    },
+    "traffic light": {
+      "display_name": "Trafik Işığı",
+      "description": "Bir trafik ışığı algılandı.",
+      "extra_info": "Örnek: Kırmızı ışık, yeşil ışık, sarı ışık."
+    },
+    "fire hydrant": {
+      "display_name": "Yangın Hidrantı",
+      "description": "Bir yangın hidrantı algılandı.",
+      "extra_info": "Örnek: Kırmızı hidrant, yer altı hidrantı, vb."
+    },
+    "stop sign": {
+      "display_name": "Dur Tabelası",
+      "description": "Bir dur tabelası algılandı.",
+      "extra_info": "Örnek: Standart kırmızı sekizgen tabela."
+    },
+    "parking meter": {
+      "display_name": "Parkmetre",
+      "description": "Bir parkmetre algılandı.",
+      "extra_info": "Örnek: Elektronik parkmetre, mekanik parkmetre."
+    },
+    "bench": {
+      "display_name": "Banka",
+      "description": "Bir oturma bankı algılandı.",
+      "extra_info": "Örnek: Ahşap banka, metal banka, park bankı."
+    },
+    "bird": {
+      "display_name": "Kuş",
+      "description": "Bir kuş algılandı.",
+      "extra_info": "Örnek: Serçe, güvercin, kartal, vb."
+    },
+    "cat": {
+      "display_name": "Kedi",
+      "description": "Bir kedi algılandı.",
+      "extra_info": "Örnek: Ev kedisi, sokak kedisi, yavru kedi."
+    },
+    "dog": {
+      "display_name": "Köpek",
+      "description": "Bir köpek algılandı.",
+      "extra_info": "Örnek: Küçük ırk, büyük ırk, yavru köpek."
+    },
+    "horse": {
+      "display_name": "At",
+      "description": "Bir at algılandı.",
+      "extra_info": "Örnek: Yarış atı, yük atı, midilli."
+    },
+    "sheep": {
+      "display_name": "Koyun",
+      "description": "Bir koyun algılandı.",
+      "extra_info": "Örnek: Yetişkin koyun, kuzu, çiftlik koyunu."
+    },
+    "cow": {
+      "display_name": "İnek",
+      "description": "Bir inek algılandı.",
+      "extra_info": "Örnek: Süt ineği, besi ineği."
+    },
+    "elephant": {
+      "display_name": "Fil",
+      "description": "Bir fil algılandı.",
+      "extra_info": "Örnek: Afrika fili, Asya fili."
+    },
+    "bear": {
+      "display_name": "Ayı",
+      "description": "Bir ayı algılandı.",
+      "extra_info": "Örnek: Kutup ayısı, boz ayı, panda."
+    },
+    "zebra": {
+      "display_name": "Zebra",
+      "description": "Bir zebra algılandı.",
+      "extra_info": "Örnek: Düz çizgili zebra, dağ zebrası."
+    },
+    "giraffe": {
+      "display_name": "Zürafa",
+      "description": "Bir zürafa algılandı.",
+      "extra_info": "Örnek: Uzun boylu zürafa, yavru zürafa."
+    },
+    "backpack": {
+      "display_name": "Sırt Çantası",
+      "description": "Bir sırt çantası algılandı.",
+      "extra_info": "Örnek: Okul çantası, kamp çantası."
+    },
+    "umbrella": {
+      "display_name": "Şemsiye",
+      "description": "Bir şemsiye algılandı.",
+      "extra_info": "Örnek: Katlanır şemsiye, büyük şemsiye."
+    },
+    "handbag": {
+      "display_name": "El Çantası",
+      "description": "Bir el çantası algılandı.",
+      "extra_info": "Örnek: Omuz çantası, clutch çanta."
+    },
+    "tie": {
+      "display_name": "Kravat",
+      "description": "Bir kravat algılandı.",
+      "extra_info": "Örnek: İpek kravat, desenli kravat."
+    },
+    "suitcase": {
+      "display_name": "Bavul",
+      "description": "Bir bavul algılandı.",
+      "extra_info": "Örnek: Seyahat bavulu, kabin boy bavul."
+    },
+    "frisbee": {
+      "display_name": "Frizbi",
+      "description": "Bir frizbi algılandı.",
+      "extra_info": "Örnek: Plastik frizbi, profesyonel frizbi."
+    },
+    "skis": {
+      "display_name": "Kayaklar",
+      "description": "Bir çift kayak algılandı.",
+      "extra_info": "Örnek: Alp kayağı, serbest stil kayağı."
+    },
+    "snowboard": {
+      "display_name": "Snowboard",
+      "description": "Bir snowboard algılandı.",
+      "extra_info": "Örnek: Freestyle snowboard, yarış snowboardu."
+    },
+    "sports ball": {
+      "display_name": "Spor Topu",
+      "description": "Bir spor topu algılandı.",
+      "extra_info": "Örnek: Futbol topu, basketbol topu, voleybol topu."
+    },
+    "kite": {
+      "display_name": "Uçurtma",
+      "description": "Bir uçurtma algılandı.",
+      "extra_info": "Örnek: Klasik uçurtma, ejderha uçurtması."
+    },
+    "baseball bat": {
+      "display_name": "Beyzbol Sopası",
+      "description": "Bir beyzbol sopası algılandı.",
+      "extra_info": "Örnek: Ahşap beyzbol sopası, alüminyum sopası."
+    },
+    "baseball glove": {
+      "display_name": "Beyzbol Eldiveni",
+      "description": "Bir beyzbol eldiveni algılandı.",
+      "extra_info": "Örnek: Sağ el eldiveni, sol el eldiveni."
+    },
+    "skateboard": {
+      "display_name": "Kaykay",
+      "description": "Bir kaykay algılandı.",
+      "extra_info": "Örnek: Klasik kaykay, elektrikli kaykay."
+    },
+    "surfboard": {
+      "display_name": "Sörf Tahtası",
+      "description": "Bir sörf tahtası algılandı.",
+      "extra_info": "Örnek: Uzun tahta, kısa tahta sörf."
+    },
+    "tennis racket": {
+      "display_name": "Tenis Raketi",
+      "description": "Bir tenis raketi algılandı.",
+      "extra_info": "Örnek: Profesyonel tenis raketi, çocuk raketi."
+    },
+    "objects": {
+      "wine glass": {
+        "display_name": "Şarap Kadehi",
+        "description": "Bir şarap kadehi algılandı.",
+        "extra_info": "Örnek: Şampanya kadehi, kırmızı şarap kadehi."
+      },
+      "cup": {
+        "display_name": "Bardak",
+        "description": "Bir bardak algılandı.",
+        "extra_info": "Örnek: Kahve bardağı, su bardağı, çay bardağı."
+      },
+      "fork": {
+        "display_name": "Çatal",
+        "description": "Bir çatal algılandı.",
+        "extra_info": "Örnek: Yemek çatalı, tatlı çatalı."
+      },
+      "knife": {
+        "display_name": "Bıçak",
+        "description": "Bir bıçak algılandı.",
+        "extra_info": "Örnek: Yemek bıçağı, ekmek bıçağı."
+      },
+      "spoon": {
+        "display_name": "Kaşık",
+        "description": "Bir kaşık algılandı.",
+        "extra_info": "Örnek: Yemek kaşığı, tatlı kaşığı."
+      },
+      "bowl": {
+        "display_name": "Kase",
+        "description": "Bir kase algılandı.",
+        "extra_info": "Örnek: Salata kasesi, çorba kasesi."
+      },
+      "banana": {
+        "display_name": "Muz",
+        "description": "Bir muz algılandı.",
+        "extra_info": "Örnek: Sarı muz, yeşil muz."
+      },
+      "apple": {
+        "display_name": "Elma",
+        "description": "Bir elma algılandı.",
+        "extra_info": "Örnek: Kırmızı elma, yeşil elma."
+      },
+      "sandwich": {
+        "display_name": "Sandviç",
+        "description": "Bir sandviç algılandı.",
+        "extra_info": "Örnek: Peynirli sandviç, etli sandviç."
+      },
+      "orange": {
+        "display_name": "Portakal",
+        "description": "Bir portakal algılandı.",
+        "extra_info": "Örnek: Navel portakal, kan portakal."
+      },
+      "broccoli": {
+        "display_name": "Brokoli",
+        "description": "Bir brokoli algılandı.",
+        "extra_info": "Örnek: Yeşil brokoli, çiçekli brokoli."
+      },
+      "carrot": {
+        "display_name": "Havuç",
+        "description": "Bir havuç algılandı.",
+        "extra_info": "Örnek: Kırmızı havuç, beyaz havuç."
+      },
+      "hot dog": {
+        "display_name": "Hotdog",
+        "description": "Bir hotdog algılandı.",
+        "extra_info": "Örnek: Sosisli sandviç, ketçaplı hotdog."
+      },
+      "pizza": {
+        "display_name": "Pizza",
+        "description": "Bir pizza algılandı.",
+        "extra_info": "Örnek: Margarita pizza, sucuklu pizza."
+      },
+      "donut": {
+        "display_name": "Dondurma",
+        "description": "Bir donut algılandı.",
+        "extra_info": "Örnek: Şekerli donut, çikolatalı donut."
+      },
+      "cake": {
+        "display_name": "Kek",
+        "description": "Bir kek algılandı.",
+        "extra_info": "Örnek: Çikolatalı kek, vanilyalı kek."
+      },
+      "chair": {
+        "display_name": "Sandalye",
+        "description": "Bir sandalye algılandı.",
+        "extra_info": "Örnek: Ofis sandalyesi, yemek sandalyesi."
+      },
+      "couch": {
+        "display_name": "Kanepe",
+        "description": "Bir kanepe algılandı.",
+        "extra_info": "Örnek: L şeklinde kanepe, köşe kanepe."
+      },
+      "potted plant": {
+        "display_name": "Saksı Bitkisi",
+        "description": "Bir saksı bitkisi algılandı.",
+        "extra_info": "Örnek: Saksıda çiçek, saksıdaki ağaç."
+      },
+      "bed": {
+        "display_name": "Yatak",
+        "description": "Bir yatak algılandı.",
+        "extra_info": "Örnek: Tek kişilik yatak, çift kişilik yatak."
+      },
+      "dining table": {
+        "display_name": "Yemek Masası",
+        "description": "Bir yemek masası algılandı.",
+        "extra_info": "Örnek: Ahşap yemek masası, cam yemek masası."
+      },
+      "toilet": {
+        "display_name": "Tuvalet",
+        "description": "Bir tuvalet algılandı.",
+        "extra_info": "Örnek: Sedir tipi tuvalet, klozet tipi tuvalet."
+      },
+      "tv": {
+        "display_name": "Televizyon",
+        "description": "Bir televizyon algılandı.",
+        "extra_info": "Örnek: LCD televizyon, Smart televizyon."
+      },
+      "laptop": {
+        "display_name": "Dizüstü Bilgisayar",
+        "description": "Bir dizüstü bilgisayar algılandı.",
+        "extra_info": "Örnek: MacBook, Windows dizüstü."
+      },
+      "mouse": {
+        "display_name": "Fare",
+        "description": "Bir bilgisayar faresi algılandı.",
+        "extra_info": "Örnek: Optik fare, kablosuz fare."
+      },
+      "remote": {
+        "display_name": "Uzaktan Kumanda",
+        "description": "Bir uzaktan kumanda algılandı.",
+        "extra_info": "Örnek: TV kumandası, klima kumandası."
+      },
+      "keyboard": {
+        "display_name": "Klavye",
+        "description": "Bir klavye algılandı.",
+        "extra_info": "Örnek: Mekanik klavye, kablosuz klavye."
+      },
+      "cell phone": {
+        "display_name": "Cep Telefonu",
+        "description": "Bir cep telefonu algılandı.",
+        "extra_info": "Örnek: Akıllı telefon, eski model telefon."
+      },
+      "microwave": {
+        "display_name": "Mikrodalga Fırın",
+        "description": "Bir mikrodalga fırın algılandı.",
+        "extra_info": "Örnek: Dijital mikrodalga, klasik mikrodalga."
+      },
+      "oven": {
+        "display_name": "Fırın",
+        "description": "Bir fırın algılandı.",
+        "extra_info": "Örnek: Elektrikli fırın, gazlı fırın."
+      },
+      "toaster": {
+        "display_name": "Ekmek Kızartma Makinesi",
+        "description": "Bir ekmek kızartma makinesi algılandı.",
+        "extra_info": "Örnek: 2 dilimlik ekmek kızartıcı, 4 dilimlik ekmek kızartıcı."
+      },
+      "sink": {
+        "display_name": "Lavabo",
+        "description": "Bir lavabo algılandı.",
+        "extra_info": "Örnek: Mutfak lavabosu, banyo lavabosu."
+      },
+      "refrigerator": {
+        "display_name": "Buzdolabı",
+        "description": "Bir buzdolabı algılandı.",
+        "extra_info": "Örnek: Tek kapaklı buzdolabı, çift kapaklı buzdolabı."
+      },
+      "bottle": {
+        "display_name": "Şişe",
+        "description": "Bir şişe algılandı.",
+        "extra_info": "Örnek: Su şişesi, cam şişe, plastik şişe."
+      }
+    }
+  }
+}
