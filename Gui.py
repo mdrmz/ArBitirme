@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (QApplication, QWidget, QLabel, QVBoxLayout,
 from ultralytics import YOLO
 import os
 import json
+from Sound_Project import Sound
 
 # --- Konfigürasyon ---
 MODEL_PATH = "yolov8n.pt"
@@ -15,7 +16,7 @@ CAMERA_INDEX = 0
 TIMER_INTERVAL_MS = 30
 VIDEO_FOLDER = "video"
 JSON_PATH = "object_info.json"
-CONFIDENCE_THRESHOLD = 0.5
+CONFIDENCE_THRESHOLD = 0.6
 # ---------------------
 
 # Model yükleme
@@ -246,6 +247,7 @@ class ObjectDetectionApp(QWidget):
         object_info_text = ""
         json_info_text = ""
 
+
         if not results.boxes:
             self.current_playing_class = None
             return frame
@@ -254,7 +256,8 @@ class ObjectDetectionApp(QWidget):
         cls = int(first_box.cls)
         conf = float(first_box.conf[0])
         label = model.names[cls] if cls < len(model.names) else f"Unknown ({cls})"
-
+        # burada ise tespit edilen nesnenin isimi okuyacak sürekli
+        Sound.ses(label)
         box_coords = first_box.xyxy[0].cpu().numpy().astype(int)
         x1, y1, x2, y2 = box_coords
         width = x2 - x1
