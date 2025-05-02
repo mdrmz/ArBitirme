@@ -1,371 +1,564 @@
 {
   "objects": {
     "person": {
-      "display_name": "İnsan",
-      "description": "Bir insan algılandı. Bu, bir birey veya bir grup olabilir.",
-      "extra_info": "Örnek: Yetişkin, çocuk, sporcu, vb."
+      "name": "İnsan",
+      "description": "İnsan, Homo sapiens türüne ait bir primat. İki ayak üzerinde yürüyen, düşünebilen ve konuşabilen bir canlı.",
+      "features": "İki ayak üzerinde yürüme, düşünme yeteneği, konuşma, alet kullanma, sosyal etkileşim",
+      "usage": "Toplumsal yaşam, iş gücü, iletişim, üretim, eğitim",
+      "interesting_facts": "İnsan beyni yaklaşık 86 milyar nöron içerir ve günlük 70.000 düşünce üretir."
     },
     "bicycle": {
-      "display_name": "Bisiklet",
-      "description": "Bir bisiklet algılandı.",
-      "extra_info": "Örnek: Dağ bisikleti, şehir bisikleti, yarış bisikleti, vb."
+      "name": "Bisiklet",
+      "description": "İnsan gücüyle hareket eden, iki tekerlekli bir ulaşım aracı.",
+      "features": "İki tekerlek, pedal sistemi, zincir mekanizması, fren sistemi",
+      "usage": "Ulaşım, spor, rekreasyon, egzersiz",
+      "interesting_facts": "İlk bisiklet 1817'de Alman Baron Karl von Drais tarafından icat edildi."
     },
     "car": {
-      "display_name": "Araba",
-      "description": "Bir motorlu kara taşıtı algılandı.",
-      "extra_info": "Örnek: Sedan, SUV, hatchback, vb."
+      "name": "Araba",
+      "description": "Motorlu, dört tekerlekli kara taşıtı.",
+      "features": "Motor, şanzıman, direksiyon, fren sistemi, yakıt deposu",
+      "usage": "Ulaşım, taşımacılık, seyahat",
+      "interesting_facts": "İlk benzinli otomobil 1886'da Karl Benz tarafından üretildi."
     },
     "motorcycle": {
-      "display_name": "Motosiklet",
-      "description": "Bir motosiklet algılandı.",
-      "extra_info": "Örnek: Scooter, chopper, yarış motosikleti, vb."
+      "name": "Motosiklet",
+      "description": "İki tekerlekli, motorlu taşıt.",
+      "features": "Motor, şanzıman, direksiyon, fren sistemi",
+      "usage": "Ulaşım, spor, rekreasyon",
+      "interesting_facts": "İlk motosiklet 1885'te Gottlieb Daimler tarafından üretildi."
     },
     "airplane": {
-      "display_name": "Uçak",
-      "description": "Bir uçak algılandı.",
-      "extra_info": "Örnek: Yolcu uçağı, savaş uçağı, küçük pervaneli uçak, vb."
+      "name": "Uçak",
+      "description": "Havada uçabilen, motorlu hava taşıtı.",
+      "features": "Kanatlar, motor, iniş takımı, kokpit",
+      "usage": "Hava ulaşımı, kargo taşımacılığı, askeri operasyonlar",
+      "interesting_facts": "İlk motorlu uçuş 1903'te Wright Kardeşler tarafından gerçekleştirildi."
     },
     "bus": {
-      "display_name": "Otobüs",
-      "description": "Bir otobüs algılandı.",
-      "extra_info": "Örnek: Şehir içi otobüs, tur otobüsü, okul otobüsü, vb."
+      "name": "Otobüs",
+      "description": "Çok sayıda yolcu taşıyabilen, büyük kara taşıtı.",
+      "features": "Geniş iç mekan, çoklu koltuklar, geniş kapılar",
+      "usage": "Toplu taşıma, şehirlerarası ulaşım, turizm",
+      "interesting_facts": "İlk otobüs 1826'da İngiltere'de hizmete girdi."
     },
     "train": {
-      "display_name": "Tren",
-      "description": "Bir tren algılandı.",
-      "extra_info": "Örnek: Yük treni, yolcu treni, hızlı tren, vb."
+      "name": "Tren",
+      "description": "Raylar üzerinde hareket eden, çok sayıda vagonu olan taşıt.",
+      "features": "Lokomotif, vagonlar, raylar, sinyalizasyon sistemi",
+      "usage": "Toplu taşıma, yük taşımacılığı, şehirlerarası ulaşım",
+      "interesting_facts": "İlk buharlı tren 1804'te Richard Trevithick tarafından yapıldı."
     },
     "truck": {
-      "display_name": "Kamyon",
-      "description": "Bir kamyon algılandı.",
-      "extra_info": "Örnek: Tır, hafriyat kamyonu, küçük kamyonet, vb."
+      "name": "Kamyon",
+      "description": "Büyük yük taşıma kapasitesine sahip motorlu araç.",
+      "features": "Güçlü motor, geniş yük alanı, dayanıklı şasi",
+      "usage": "Yük taşımacılığı, nakliyat, inşaat",
+      "interesting_facts": "İlk kamyon 1896'da Gottlieb Daimler tarafından üretildi."
     },
     "boat": {
-      "display_name": "Tekne",
-      "description": "Bir tekne algılandı.",
-      "extra_info": "Örnek: Yelkenli, motorlu tekne, sandal, vb."
+      "name": "Tekne",
+      "description": "Su üzerinde hareket eden, küçük deniz taşıtı.",
+      "features": "Gövde, motor, dümen, güvenlik ekipmanları",
+      "usage": "Balıkçılık, rekreasyon, ulaşım",
+      "interesting_facts": "İlk tekne MÖ 8000 yıllarında kullanılmaya başlandı."
     },
     "traffic light": {
-      "display_name": "Trafik Işığı",
-      "description": "Bir trafik ışığı algılandı.",
-      "extra_info": "Örnek: Kırmızı ışık, yeşil ışık, sarı ışık."
+      "name": "Trafik Işığı",
+      "description": "Trafik akışını düzenleyen, renkli sinyal sistemi.",
+      "features": "Kırmızı, sarı, yeşil ışıklar, zamanlayıcı, sensörler",
+      "usage": "Trafik kontrolü, güvenlik, düzen sağlama",
+      "interesting_facts": "İlk trafik ışığı 1868'de Londra'da kullanıldı."
     },
     "fire hydrant": {
-      "display_name": "Yangın Hidrantı",
-      "description": "Bir yangın hidrantı algılandı.",
-      "extra_info": "Örnek: Kırmızı hidrant, yer altı hidrantı, vb."
+      "name": "Yangın Musluğu",
+      "description": "Acil durumlarda su temini sağlayan yer altı su sistemi bağlantı noktası.",
+      "features": "Su bağlantısı, vana sistemi, standart bağlantı noktaları",
+      "usage": "Yangın söndürme, acil durum müdahalesi",
+      "interesting_facts": "İlk yangın musluğu 1801'de Frederick Graff tarafından icat edildi."
     },
     "stop sign": {
-      "display_name": "Dur Tabelası",
-      "description": "Bir dur tabelası algılandı.",
-      "extra_info": "Örnek: Standart kırmızı sekizgen tabela."
+      "name": "Dur İşareti",
+      "description": "Trafikte durulması gereken noktaları belirten kırmızı sekizgen işaret.",
+      "features": "Kırmızı renk, sekizgen şekil, beyaz yazı",
+      "usage": "Trafik kontrolü, güvenlik",
+      "interesting_facts": "İlk dur işareti 1915'te Michigan'da kullanıldı."
     },
     "parking meter": {
-      "display_name": "Parkmetre",
-      "description": "Bir parkmetre algılandı.",
-      "extra_info": "Örnek: Elektronik parkmetre, mekanik parkmetre."
+      "name": "Parkmetre",
+      "description": "Park yeri kullanımı için ücret toplayan cihaz.",
+      "features": "Para yuvası, zamanlayıcı, gösterge",
+      "usage": "Park yeri yönetimi, gelir toplama",
+      "interesting_facts": "İlk parkmetre 1935'te Oklahoma'da kullanıldı."
     },
     "bench": {
-      "display_name": "Banka",
-      "description": "Bir oturma bankı algılandı.",
-      "extra_info": "Örnek: Ahşap banka, metal banka, park bankı."
+      "name": "Bank",
+      "description": "Oturmak için tasarlanmış, genellikle açık alanlarda bulunan mobilya.",
+      "features": "Oturma yüzeyi, ayaklar, dayanıklı malzeme",
+      "usage": "Dinlenme, bekleme, sosyal etkileşim",
+      "interesting_facts": "Antik Roma'da ilk banklar taştan yapılıyordu."
     },
     "bird": {
-      "display_name": "Kuş",
-      "description": "Bir kuş algılandı.",
-      "extra_info": "Örnek: Serçe, güvercin, kartal, vb."
+      "name": "Kuş",
+      "description": "Tüylü, kanatlı, yumurtlayan omurgalı hayvan.",
+      "features": "Kanatlar, tüyler, gagalar, yumurtlama",
+      "usage": "Ekosistem dengesi, tozlaşma, böcek kontrolü",
+      "interesting_facts": "Dünyada yaklaşık 10.000 kuş türü bulunmaktadır."
     },
     "cat": {
-      "display_name": "Kedi",
-      "description": "Bir kedi algılandı.",
-      "extra_info": "Örnek: Ev kedisi, sokak kedisi, yavru kedi."
+      "name": "Kedi",
+      "description": "Evcil, etçil memeli hayvan.",
+      "features": "Keskin pençeler, hassas bıyıklar, gece görüşü",
+      "usage": "Evcil hayvan, böcek kontrolü",
+      "interesting_facts": "Kediler günde ortalama 12-16 saat uyur."
     },
     "dog": {
-      "display_name": "Köpek",
-      "description": "Bir köpek algılandı.",
-      "extra_info": "Örnek: Küçük ırk, büyük ırk, yavru köpek."
+      "name": "Köpek",
+      "description": "İnsanın en eski evcil hayvanı, sadık dost.",
+      "features": "Keskin koku alma, işitme, sadakat",
+      "usage": "Evcil hayvan, koruma, rehberlik",
+      "interesting_facts": "Köpekler 10.000 yıldan fazla süredir insanlarla birlikte yaşıyor."
     },
     "horse": {
-      "display_name": "At",
-      "description": "Bir at algılandı.",
-      "extra_info": "Örnek: Yarış atı, yük atı, midilli."
+      "name": "At",
+      "description": "Büyük, güçlü, tek tırnaklı memeli.",
+      "features": "Güçlü kaslar, hızlı koşma yeteneği, dayanıklılık",
+      "usage": "Ulaşım, spor, tarım, terapi",
+      "interesting_facts": "Atlar ayakta uyuyabilir ve günde sadece 2-3 saat uykuya ihtiyaç duyar."
     },
     "sheep": {
-      "display_name": "Koyun",
-      "description": "Bir koyun algılandı.",
-      "extra_info": "Örnek: Yetişkin koyun, kuzu, çiftlik koyunu."
+      "name": "Koyun",
+      "description": "Yünlü, otçul çiftlik hayvanı.",
+      "features": "Yün, sürü davranışı, otçul beslenme",
+      "usage": "Et, süt, yün üretimi",
+      "interesting_facts": "Koyunlar 360 derece görüş açısına sahiptir."
     },
     "cow": {
-      "display_name": "İnek",
-      "description": "Bir inek algılandı.",
-      "extra_info": "Örnek: Süt ineği, besi ineği."
+      "name": "İnek",
+      "description": "Büyükbaş çiftlik hayvanı.",
+      "features": "Süt üretimi, güçlü yapı, otçul beslenme",
+      "usage": "Süt, et üretimi, tarım",
+      "interesting_facts": "İnekler günde ortalama 6-8 saat çiğneme yapar."
     },
     "elephant": {
-      "display_name": "Fil",
-      "description": "Bir fil algılandı.",
-      "extra_info": "Örnek: Afrika fili, Asya fili."
+      "name": "Fil",
+      "description": "Dünyanın en büyük kara memelisi.",
+      "features": "Hortum, büyük kulaklar, uzun dişler",
+      "usage": "Turizm, eğitim, koruma",
+      "interesting_facts": "Filler ailelerini 30 yıldan fazla hatırlayabilir."
     },
     "bear": {
-      "display_name": "Ayı",
-      "description": "Bir ayı algılandı.",
-      "extra_info": "Örnek: Kutup ayısı, boz ayı, panda."
+      "name": "Ayı",
+      "description": "Büyük, güçlü yırtıcı memeli.",
+      "features": "Güçlü pençeler, kış uykusu, iyi koku alma",
+      "usage": "Ekosistem dengesi, turizm",
+      "interesting_facts": "Ayılar yüzebilir ve ağaçlara tırmanabilir."
     },
     "zebra": {
-      "display_name": "Zebra",
-      "description": "Bir zebra algılandı.",
-      "extra_info": "Örnek: Düz çizgili zebra, dağ zebrası."
+      "name": "Zebra",
+      "description": "Siyah-beyaz çizgili, at benzeri memeli.",
+      "features": "Çizgili desen, hızlı koşma, sürü davranışı",
+      "usage": "Turizm, eğitim",
+      "interesting_facts": "Her zebranın çizgileri parmak izi gibi benzersizdir."
     },
     "giraffe": {
-      "display_name": "Zürafa",
-      "description": "Bir zürafa algılandı.",
-      "extra_info": "Örnek: Uzun boylu zürafa, yavru zürafa."
+      "name": "Zürafa",
+      "description": "Uzun boyunlu, benekli memeli.",
+      "features": "Uzun boyun, benekli desen, uzun bacaklar",
+      "usage": "Turizm, eğitim",
+      "interesting_facts": "Zürafaların dili 50 cm uzunluğunda olabilir."
     },
     "backpack": {
-      "display_name": "Sırt Çantası",
-      "description": "Bir sırt çantası algılandı.",
-      "extra_info": "Örnek: Okul çantası, kamp çantası."
+      "name": "Sırt Çantası",
+      "description": "Sırtta taşınan, eşya taşıma aracı.",
+      "features": "Omuz askıları, bölmeler, fermuarlar",
+      "usage": "Eşya taşıma, okul, seyahat",
+      "interesting_facts": "İlk modern sırt çantası 1938'de tasarlandı."
     },
     "umbrella": {
-      "display_name": "Şemsiye",
-      "description": "Bir şemsiye algılandı.",
-      "extra_info": "Örnek: Katlanır şemsiye, büyük şemsiye."
+      "name": "Şemsiye",
+      "description": "Yağmur ve güneşten korunma aracı.",
+      "features": "Açılır kapanır yapı, saplık, su geçirmez kumaş",
+      "usage": "Yağmur koruması, güneş koruması",
+      "interesting_facts": "İlk şemsiye MÖ 4000 yılında kullanıldı."
     },
     "handbag": {
-      "display_name": "El Çantası",
-      "description": "Bir el çantası algılandı.",
-      "extra_info": "Örnek: Omuz çantası, clutch çanta."
+      "name": "El Çantası",
+      "description": "Eşya taşımak için kullanılan aksesuar.",
+      "features": "Sap, bölmeler, fermuarlar",
+      "usage": "Eşya taşıma, moda aksesuarı",
+      "interesting_facts": "İlk el çantaları Mısırlılar tarafından kullanıldı."
     },
     "tie": {
-      "display_name": "Kravat",
-      "description": "Bir kravat algılandı.",
-      "extra_info": "Örnek: İpek kravat, desenli kravat."
+      "name": "Kravat",
+      "description": "Boyun etrafına bağlanan, resmi kıyafet aksesuarı.",
+      "features": "Uzun şerit, düğüm, desen",
+      "usage": "Resmi kıyafet, moda aksesuarı",
+      "interesting_facts": "İlk kravat 17. yüzyılda Hırvat askerleri tarafından kullanıldı."
     },
     "suitcase": {
-      "display_name": "Bavul",
-      "description": "Bir bavul algılandı.",
-      "extra_info": "Örnek: Seyahat bavulu, kabin boy bavul."
+      "name": "Bavul",
+      "description": "Seyahat için eşya taşıma çantası.",
+      "features": "Sert yapı, tekerlekler, kilit sistemi",
+      "usage": "Seyahat, eşya taşıma",
+      "interesting_facts": "İlk tekerlekli bavul 1970'lerde icat edildi."
     },
     "frisbee": {
-      "display_name": "Frizbi",
-      "description": "Bir frizbi algılandı.",
-      "extra_info": "Örnek: Plastik frizbi, profesyonel frizbi."
+      "name": "Frizbi",
+      "description": "Havada uçan, disk şeklinde oyun aracı.",
+      "features": "Yuvarlak disk, hafif malzeme, aerodinamik yapı",
+      "usage": "Spor, eğlence, oyun",
+      "interesting_facts": "Frizbi, 1948'de bir pasta kutusundan esinlenilerek icat edildi."
     },
     "skis": {
-      "display_name": "Kayaklar",
-      "description": "Bir çift kayak algılandı.",
-      "extra_info": "Örnek: Alp kayağı, serbest stil kayağı."
+      "name": "Kayak",
+      "description": "Karda kaymak için kullanılan uzun tahtalar.",
+      "features": "Uzun şekil, kaygan yüzey, bağlama sistemi",
+      "usage": "Kış sporu, eğlence",
+      "interesting_facts": "İlk kayaklar 5000 yıl önce kullanıldı."
     },
     "snowboard": {
-      "display_name": "Snowboard",
-      "description": "Bir snowboard algılandı.",
-      "extra_info": "Örnek: Freestyle snowboard, yarış snowboardu."
+      "name": "Snowboard",
+      "description": "Karda kaymak için kullanılan tek parça tahta.",
+      "features": "Geniş yüzey, bağlama sistemi, kaygan alt yüzey",
+      "usage": "Kış sporu, eğlence",
+      "interesting_facts": "Snowboard 1960'larda sörf tahtasından esinlenilerek icat edildi."
     },
     "sports ball": {
-      "display_name": "Spor Topu",
-      "description": "Bir spor topu algılandı.",
-      "extra_info": "Örnek: Futbol topu, basketbol topu, voleybol topu."
+      "name": "Spor Topu",
+      "description": "Çeşitli sporlarda kullanılan yuvarlak oyun aracı.",
+      "features": "Yuvarlak şekil, esnek yapı, dayanıklı malzeme",
+      "usage": "Spor, oyun, eğlence",
+      "interesting_facts": "İlk toplar MÖ 3000 yılında kullanıldı."
     },
     "kite": {
-      "display_name": "Uçurtma",
-      "description": "Bir uçurtma algılandı.",
-      "extra_info": "Örnek: Klasik uçurtma, ejderha uçurtması."
+      "name": "Uçurtma",
+      "description": "Rüzgarda uçan, ipe bağlı oyun aracı.",
+      "features": "Hafif yapı, iplik, kuyruk",
+      "usage": "Eğlence, spor, gösteri",
+      "interesting_facts": "İlk uçurtmalar 2000 yıl önce Çin'de kullanıldı."
     },
     "baseball bat": {
-      "display_name": "Beyzbol Sopası",
-      "description": "Bir beyzbol sopası algılandı.",
-      "extra_info": "Örnek: Ahşap beyzbol sopası, alüminyum sopası."
+      "name": "Beyzbol Sopası",
+      "description": "Beyzbol oyununda kullanılan uzun sopa.",
+      "features": "Silindirik yapı, tutma yeri, darbe yüzeyi",
+      "usage": "Beyzbol sporu",
+      "interesting_facts": "Profesyonel beyzbol sopaları genellikle akçaağaçtan yapılır."
     },
     "baseball glove": {
-      "display_name": "Beyzbol Eldiveni",
-      "description": "Bir beyzbol eldiveni algılandı.",
-      "extra_info": "Örnek: Sağ el eldiveni, sol el eldiveni."
+      "name": "Beyzbol Eldiveni",
+      "description": "Beyzbol oyununda top yakalamak için kullanılan eldiven.",
+      "features": "Deri yapı, parmak bölmeleri, bağcıklar",
+      "usage": "Beyzbol sporu, koruma",
+      "interesting_facts": "İlk beyzbol eldivenleri 1870'lerde kullanıldı."
     },
     "skateboard": {
-      "display_name": "Kaykay",
-      "description": "Bir kaykay algılandı.",
-      "extra_info": "Örnek: Klasik kaykay, elektrikli kaykay."
+      "name": "Kaykay",
+      "description": "Tekerlekli, üzerinde kayılan tahta.",
+      "features": "Tahta platform, tekerlekler, akslar",
+      "usage": "Spor, ulaşım, eğlence",
+      "interesting_facts": "İlk kaykay 1950'lerde sörfçüler tarafından icat edildi."
     },
     "surfboard": {
-      "display_name": "Sörf Tahtası",
-      "description": "Bir sörf tahtası algılandı.",
-      "extra_info": "Örnek: Uzun tahta, kısa tahta sörf."
+      "name": "Sörf Tahtası",
+      "description": "Dalgalarda sörf yapmak için kullanılan uzun tahta.",
+      "features": "Uzun şekil, hafif malzeme, kaygan yüzey",
+      "usage": "Sörf sporu, eğlence",
+      "interesting_facts": "İlk sörf tahtaları Hawaii'de kullanıldı."
     },
     "tennis racket": {
-      "display_name": "Tenis Raketi",
-      "description": "Bir tenis raketi algılandı.",
-      "extra_info": "Örnek: Profesyonel tenis raketi, çocuk raketi."
+      "name": "Tenis Raketi",
+      "description": "Tenis oyununda top vurmak için kullanılan alet.",
+      "features": "Kafes yapı, sap, gerilmiş teller",
+      "usage": "Tenis sporu",
+      "interesting_facts": "Modern tenis raketleri karbon fiberden yapılır."
     },
-    "objects": {
-      "wine glass": {
-        "display_name": "Şarap Kadehi",
-        "description": "Bir şarap kadehi algılandı.",
-        "extra_info": "Örnek: Şampanya kadehi, kırmızı şarap kadehi."
-      },
-      "cup": {
-        "display_name": "Bardak",
-        "description": "Bir bardak algılandı.",
-        "extra_info": "Örnek: Kahve bardağı, su bardağı, çay bardağı."
-      },
-      "fork": {
-        "display_name": "Çatal",
-        "description": "Bir çatal algılandı.",
-        "extra_info": "Örnek: Yemek çatalı, tatlı çatalı."
-      },
-      "knife": {
-        "display_name": "Bıçak",
-        "description": "Bir bıçak algılandı.",
-        "extra_info": "Örnek: Yemek bıçağı, ekmek bıçağı."
-      },
-      "spoon": {
-        "display_name": "Kaşık",
-        "description": "Bir kaşık algılandı.",
-        "extra_info": "Örnek: Yemek kaşığı, tatlı kaşığı."
-      },
-      "bowl": {
-        "display_name": "Kase",
-        "description": "Bir kase algılandı.",
-        "extra_info": "Örnek: Salata kasesi, çorba kasesi."
-      },
-      "banana": {
-        "display_name": "Muz",
-        "description": "Bir muz algılandı.",
-        "extra_info": "Örnek: Sarı muz, yeşil muz."
-      },
-      "apple": {
-        "display_name": "Elma",
-        "description": "Bir elma algılandı.",
-        "extra_info": "Örnek: Kırmızı elma, yeşil elma."
-      },
-      "sandwich": {
-        "display_name": "Sandviç",
-        "description": "Bir sandviç algılandı.",
-        "extra_info": "Örnek: Peynirli sandviç, etli sandviç."
-      },
-      "orange": {
-        "display_name": "Portakal",
-        "description": "Bir portakal algılandı.",
-        "extra_info": "Örnek: Navel portakal, kan portakal."
-      },
-      "broccoli": {
-        "display_name": "Brokoli",
-        "description": "Bir brokoli algılandı.",
-        "extra_info": "Örnek: Yeşil brokoli, çiçekli brokoli."
-      },
-      "carrot": {
-        "display_name": "Havuç",
-        "description": "Bir havuç algılandı.",
-        "extra_info": "Örnek: Kırmızı havuç, beyaz havuç."
-      },
-      "hot dog": {
-        "display_name": "Hotdog",
-        "description": "Bir hotdog algılandı.",
-        "extra_info": "Örnek: Sosisli sandviç, ketçaplı hotdog."
-      },
-      "pizza": {
-        "display_name": "Pizza",
-        "description": "Bir pizza algılandı.",
-        "extra_info": "Örnek: Margarita pizza, sucuklu pizza."
-      },
-      "donut": {
-        "display_name": "Dondurma",
-        "description": "Bir donut algılandı.",
-        "extra_info": "Örnek: Şekerli donut, çikolatalı donut."
-      },
-      "cake": {
-        "display_name": "Kek",
-        "description": "Bir kek algılandı.",
-        "extra_info": "Örnek: Çikolatalı kek, vanilyalı kek."
-      },
-      "chair": {
-        "display_name": "Sandalye",
-        "description": "Bir sandalye algılandı.",
-        "extra_info": "Örnek: Ofis sandalyesi, yemek sandalyesi."
-      },
-      "couch": {
-        "display_name": "Kanepe",
-        "description": "Bir kanepe algılandı.",
-        "extra_info": "Örnek: L şeklinde kanepe, köşe kanepe."
-      },
-      "potted plant": {
-        "display_name": "Saksı Bitkisi",
-        "description": "Bir saksı bitkisi algılandı.",
-        "extra_info": "Örnek: Saksıda çiçek, saksıdaki ağaç."
-      },
-      "bed": {
-        "display_name": "Yatak",
-        "description": "Bir yatak algılandı.",
-        "extra_info": "Örnek: Tek kişilik yatak, çift kişilik yatak."
-      },
-      "dining table": {
-        "display_name": "Yemek Masası",
-        "description": "Bir yemek masası algılandı.",
-        "extra_info": "Örnek: Ahşap yemek masası, cam yemek masası."
-      },
-      "toilet": {
-        "display_name": "Tuvalet",
-        "description": "Bir tuvalet algılandı.",
-        "extra_info": "Örnek: Sedir tipi tuvalet, klozet tipi tuvalet."
-      },
-      "tv": {
-        "display_name": "Televizyon",
-        "description": "Bir televizyon algılandı.",
-        "extra_info": "Örnek: LCD televizyon, Smart televizyon."
-      },
-      "laptop": {
-        "display_name": "Dizüstü Bilgisayar",
-        "description": "Bir dizüstü bilgisayar algılandı.",
-        "extra_info": "Örnek: MacBook, Windows dizüstü."
-      },
-      "mouse": {
-        "display_name": "Fare",
-        "description": "Bir bilgisayar faresi algılandı.",
-        "extra_info": "Örnek: Optik fare, kablosuz fare."
-      },
-      "remote": {
-        "display_name": "Uzaktan Kumanda",
-        "description": "Bir uzaktan kumanda algılandı.",
-        "extra_info": "Örnek: TV kumandası, klima kumandası."
-      },
-      "keyboard": {
-        "display_name": "Klavye",
-        "description": "Bir klavye algılandı.",
-        "extra_info": "Örnek: Mekanik klavye, kablosuz klavye."
-      },
-      "cell phone": {
-        "display_name": "Cep Telefonu",
-        "description": "Bir cep telefonu algılandı.",
-        "extra_info": "Örnek: Akıllı telefon, eski model telefon."
-      },
-      "microwave": {
-        "display_name": "Mikrodalga Fırın",
-        "description": "Bir mikrodalga fırın algılandı.",
-        "extra_info": "Örnek: Dijital mikrodalga, klasik mikrodalga."
-      },
-      "oven": {
-        "display_name": "Fırın",
-        "description": "Bir fırın algılandı.",
-        "extra_info": "Örnek: Elektrikli fırın, gazlı fırın."
-      },
-      "toaster": {
-        "display_name": "Ekmek Kızartma Makinesi",
-        "description": "Bir ekmek kızartma makinesi algılandı.",
-        "extra_info": "Örnek: 2 dilimlik ekmek kızartıcı, 4 dilimlik ekmek kızartıcı."
-      },
-      "sink": {
-        "display_name": "Lavabo",
-        "description": "Bir lavabo algılandı.",
-        "extra_info": "Örnek: Mutfak lavabosu, banyo lavabosu."
-      },
-      "refrigerator": {
-        "display_name": "Buzdolabı",
-        "description": "Bir buzdolabı algılandı.",
-        "extra_info": "Örnek: Tek kapaklı buzdolabı, çift kapaklı buzdolabı."
-      },
-      "bottle": {
-        "display_name": "Şişe",
-        "description": "Bir şişe algılandı.",
-        "extra_info": "Örnek: Su şişesi, cam şişe, plastik şişe."
-      }
+    "bottle": {
+      "name": "Şişe",
+      "description": "Sıvı taşımak için kullanılan kap.",
+      "features": "Dar boyun, kapak, dayanıklı malzeme",
+      "usage": "Sıvı taşıma, saklama",
+      "interesting_facts": "İlk cam şişeler MÖ 1500'de yapıldı."
+    },
+    "wine glass": {
+      "name": "Şarap Bardağı",
+      "description": "Şarap içmek için özel tasarlanmış cam.",
+      "features": "İnce cam, uzun sap, geniş gövdeli",
+      "usage": "Şarap içme, sunum",
+      "interesting_facts": "Şarap bardakları şarabın aromasını en iyi şekilde yaymak için tasarlanır."
+    },
+    "cup": {
+      "name": "Fincan",
+      "description": "Sıcak içecekler için kullanılan kap.",
+      "features": "Kulplu yapı, dayanıklı malzeme",
+      "usage": "İçecek servisi, kullanım",
+      "interesting_facts": "İlk fincanlar MÖ 4000'de kullanıldı."
+    },
+    "fork": {
+      "name": "Çatal",
+      "description": "Yemek yemek için kullanılan çok dişli alet.",
+      "features": "Dişler, sap, metal yapı",
+      "usage": "Yemek yeme, servis",
+      "interesting_facts": "İlk çatallar 11. yüzyılda kullanıldı."
+    },
+    "knife": {
+      "name": "Bıçak",
+      "description": "Kesme ve doğrama işlemleri için kullanılan alet.",
+      "features": "Keskin ağız, sap, metal yapı",
+      "usage": "Kesme, doğrama, yemek hazırlama",
+      "interesting_facts": "İlk bıçaklar MÖ 2.5 milyon yıl önce kullanıldı."
+    },
+    "spoon": {
+      "name": "Kaşık",
+      "description": "Sıvı ve yumuşak yiyecekleri yemek için kullanılan alet.",
+      "features": "Kepçe şekli, sap, metal yapı",
+      "usage": "Yemek yeme, servis",
+      "interesting_facts": "İlk kaşıklar MÖ 1000'de kullanıldı."
+    },
+    "bowl": {
+      "name": "Kase",
+      "description": "Yemek ve içecek servisi için kullanılan derin kap.",
+      "features": "Derin yapı, geniş ağız, dayanıklı malzeme",
+      "usage": "Yemek servisi, saklama",
+      "interesting_facts": "İlk kaseler MÖ 5000'de kullanıldı."
+    },
+    "banana": {
+      "name": "Muz",
+      "description": "Sarı, uzun, tatlı meyve.",
+      "features": "Sarı kabuk, yumuşak et, tatlı lezzet",
+      "usage": "Yemek, atıştırmalık, tatlı",
+      "interesting_facts": "Muzlar aslında çilek ailesindendir."
+    },
+    "apple": {
+      "name": "Elma",
+      "description": "Yuvarlak, tatlı veya ekşi meyve.",
+      "features": "Yuvarlak şekil, ince kabuk, sulu et",
+      "usage": "Yemek, meyve suyu, tatlı",
+      "interesting_facts": "Dünyada 7500'den fazla elma çeşidi vardır."
+    },
+    "sandwich": {
+      "name": "Sandviç",
+      "description": "İki dilim ekmek arasına konulan yiyecek.",
+      "features": "Ekmek, iç malzeme, katmanlı yapı",
+      "usage": "Hızlı yemek, atıştırmalık",
+      "interesting_facts": "İlk sandviç 1762'de İngiltere'de yapıldı."
+    },
+    "orange": {
+      "name": "Portakal",
+      "description": "Turuncu, yuvarlak, turunçgil meyvesi.",
+      "features": "Turuncu kabuk, sulu et, C vitamini",
+      "usage": "Yemek, meyve suyu, tatlı",
+      "interesting_facts": "Portakallar aslında yeşil olgunlaşır, soğuk hava turuncu rengi verir."
+    },
+    "broccoli": {
+      "name": "Brokoli",
+      "description": "Yeşil, çiçekli sebze.",
+      "features": "Yeşil renk, çiçekli yapı, besleyici",
+      "usage": "Yemek, salata, garnitür",
+      "interesting_facts": "Brokoli, lahana ailesindendir."
+    },
+    "carrot": {
+      "name": "Havuç",
+      "description": "Turuncu, uzun kök sebze.",
+      "features": "Turuncu renk, uzun şekil, tatlı lezzet",
+      "usage": "Yemek, salata, meyve suyu",
+      "interesting_facts": "Havuçlar aslında mor, beyaz ve sarı renklerde de olabilir."
+    },
+    "hot dog": {
+      "name": "Sosisli Sandviç",
+      "description": "Ekmek arası sosis.",
+      "features": "Ekmek, sosis, soslar",
+      "usage": "Hızlı yemek, atıştırmalık",
+      "interesting_facts": "İlk sosisli sandviç 1904'te St. Louis'de satıldı."
+    },
+    "pizza": {
+      "name": "Pizza",
+      "description": "Yuvarlak hamur üzerine malzemeler konularak pişirilen yemek.",
+      "features": "Hamur, sos, peynir, malzemeler",
+      "usage": "Ana yemek, atıştırmalık",
+      "interesting_facts": "İlk pizza 1889'da Napoli'de yapıldı."
+    },
+    "donut": {
+      "name": "Çörek",
+      "description": "Halka şeklinde, şekerli hamur tatlısı.",
+      "features": "Halka şekil, şekerli kaplama, yumuşak hamur",
+      "usage": "Tatlı, atıştırmalık",
+      "interesting_facts": "İlk çörek 1847'de yapıldı."
+    },
+    "cake": {
+      "name": "Pasta",
+      "description": "Tatlı, katmanlı hamur tatlısı.",
+      "features": "Katmanlar, krema, süsleme",
+      "usage": "Tatlı, kutlama",
+      "interesting_facts": "İlk pastalar Mısır'da MÖ 2000'de yapıldı."
+    },
+    "chair": {
+      "name": "Sandalye",
+      "description": "Oturmak için tasarlanmış mobilya.",
+      "features": "Oturma yüzeyi, ayaklar, sırtlık",
+      "usage": "Oturma, dinlenme",
+      "interesting_facts": "İlk sandalyeler MÖ 3000'de kullanıldı."
+    },
+    "couch": {
+      "name": "Kanepe",
+      "description": "Birden fazla kişinin oturabileceği büyük mobilya.",
+      "features": "Geniş oturma alanı, yastıklar, dayanıklı yapı",
+      "usage": "Oturma, dinlenme, uyuma",
+      "interesting_facts": "İlk kanepeler 17. yüzyılda kullanıldı."
+    },
+    "potted plant": {
+      "name": "Saksı Bitkisi",
+      "description": "Saksıda yetiştirilen bitki.",
+      "features": "Bitki, saksı, toprak",
+      "usage": "Dekorasyon, hava temizleme",
+      "interesting_facts": "Saksı bitkileri havadaki toksinleri temizleyebilir."
+    },
+    "bed": {
+      "name": "Yatak",
+      "description": "Uyumak için tasarlanmış mobilya.",
+      "features": "Şilte, yastık, yorgan",
+      "usage": "Uyuma, dinlenme",
+      "interesting_facts": "İnsanlar hayatlarının üçte birini yatakta geçirir."
+    },
+    "dining table": {
+      "name": "Yemek Masası",
+      "description": "Yemek yemek için tasarlanmış mobilya.",
+      "features": "Düz yüzey, ayaklar, dayanıklı yapı",
+      "usage": "Yemek yeme, toplantı",
+      "interesting_facts": "İlk yemek masaları MÖ 3000'de kullanıldı."
+    },
+    "toilet": {
+      "name": "Tuvalet",
+      "description": "Kişisel hijyen için kullanılan donanım.",
+      "features": "Oturak, sifon, su deposu",
+      "usage": "Kişisel hijyen",
+      "interesting_facts": "İlk modern tuvalet 1596'da icat edildi."
+    },
+    "tv": {
+      "name": "Televizyon",
+      "description": "Görüntü ve ses yayını alan elektronik cihaz.",
+      "features": "Ekran, hoparlörler, uzaktan kumanda",
+      "usage": "Eğlence, haber, eğitim",
+      "interesting_facts": "İlk televizyon yayını 1927'de yapıldı."
+    },
+    "laptop": {
+      "name": "Dizüstü Bilgisayar",
+      "description": "Taşınabilir kişisel bilgisayar.",
+      "features": "Ekran, klavye, işlemci",
+      "usage": "İş, eğitim, eğlence",
+      "interesting_facts": "İlk dizüstü bilgisayar 1981'de üretildi."
+    },
+    "mouse": {
+      "name": "Fare",
+      "description": "Bilgisayar kontrolü için kullanılan cihaz.",
+      "features": "Tuşlar, tekerlek, sensör",
+      "usage": "Bilgisayar kontrolü",
+      "interesting_facts": "İlk bilgisayar faresi 1964'te icat edildi."
+    },
+    "remote": {
+      "name": "Uzaktan Kumanda",
+      "description": "Elektronik cihazları uzaktan kontrol eden alet.",
+      "features": "Tuşlar, kızılötesi verici, pil",
+      "usage": "Cihaz kontrolü",
+      "interesting_facts": "İlk uzaktan kumanda 1950'de icat edildi."
+    },
+    "keyboard": {
+      "name": "Klavye",
+      "description": "Bilgisayara veri girişi için kullanılan cihaz.",
+      "features": "Tuşlar, sayısal tuş takımı, fonksiyon tuşları",
+      "usage": "Veri girişi, yazı yazma",
+      "interesting_facts": "İlk klavye 1868'de icat edildi."
+    },
+    "cell phone": {
+      "name": "Cep Telefonu",
+      "description": "Mobil iletişim cihazı.",
+      "features": "Ekran, kamera, internet bağlantısı",
+      "usage": "İletişim, internet, eğlence",
+      "interesting_facts": "İlk cep telefonu 1973'te icat edildi."
+    },
+    "microwave": {
+      "name": "Mikrodalga Fırın",
+      "description": "Mikrodalga ışınlarla ısıtma yapan cihaz.",
+      "features": "Isıtma odası, kontrol paneli, döner tabla",
+      "usage": "Yemek ısıtma, pişirme",
+      "interesting_facts": "İlk mikrodalga fırın 1947'de üretildi."
+    },
+    "oven": {
+      "name": "Fırın",
+      "description": "Yemek pişirmek için kullanılan cihaz.",
+      "features": "Pişirme odası, ısı kontrolü, zamanlayıcı",
+      "usage": "Yemek pişirme, ısıtma",
+      "interesting_facts": "İlk fırınlar MÖ 29.000'de kullanıldı."
+    },
+    "toaster": {
+      "name": "Tost Makinesi",
+      "description": "Ekmek kızartmak için kullanılan cihaz.",
+      "features": "Kızartma yuvaları, zamanlayıcı, ısı kontrolü",
+      "usage": "Ekmek kızartma",
+      "interesting_facts": "İlk tost makinesi 1893'te icat edildi."
+    },
+    "sink": {
+      "name": "Lavabo",
+      "description": "Su kullanımı için tasarlanmış donanım.",
+      "features": "Su musluğu, gider, tezgah",
+      "usage": "El yıkama, bulaşık yıkama",
+      "interesting_facts": "İlk modern lavabolar 1700'lerde kullanıldı."
+    },
+    "refrigerator": {
+      "name": "Buzdolabı",
+      "description": "Yiyecekleri soğuk tutmak için kullanılan cihaz.",
+      "features": "Soğutma sistemi, raflar, dondurucu",
+      "usage": "Yiyecek saklama, soğutma",
+      "interesting_facts": "İlk buzdolabı 1834'te icat edildi."
+    },
+    "book": {
+      "name": "Kitap",
+      "description": "Yazılı bilgi içeren basılı materyal.",
+      "features": "Sayfalar, kapak, cilt",
+      "usage": "Okuma, eğitim, eğlence",
+      "interesting_facts": "İlk kitap MÖ 2400'de yazıldı."
+    },
+    "clock": {
+      "name": "Saat",
+      "description": "Zamanı gösteren cihaz.",
+      "features": "Kadran, akrep, yelkovan",
+      "usage": "Zaman ölçümü, dekorasyon",
+      "interesting_facts": "İlk mekanik saat 1300'lerde icat edildi."
+    },
+    "vase": {
+      "name": "Vazo",
+      "description": "Çiçek ve süs eşyaları için kullanılan kap.",
+      "features": "Geniş ağız, dekoratif yapı, dayanıklı malzeme",
+      "usage": "Dekorasyon, çiçek düzenleme",
+      "interesting_facts": "İlk vazolar MÖ 5000'de yapıldı."
+    },
+    "scissors": {
+      "name": "Makas",
+      "description": "Kesme işlemi için kullanılan alet.",
+      "features": "İki bıçak, menteşe, saplar",
+      "usage": "Kesme, kırpma",
+      "interesting_facts": "İlk makaslar MÖ 1500'de kullanıldı."
+    },
+    "teddy bear": {
+      "name": "Oyuncak Ayı",
+      "description": "Yumuşak, oyuncak ayı.",
+      "features": "Yumuşak malzeme, doldurulmuş yapı, sevimli görünüm",
+      "usage": "Oyuncak, dekorasyon",
+      "interesting_facts": "İlk oyuncak ayı 1902'de yapıldı."
+    },
+    "hair drier": {
+      "name": "Saç Kurutma Makinesi",
+      "description": "Saç kurutmak için kullanılan cihaz.",
+      "features": "Sıcak hava üfleme, güç ayarı, nozul",
+      "usage": "Saç kurutma, şekillendirme",
+      "interesting_facts": "İlk saç kurutma makinesi 1890'da icat edildi."
+    },
+    "toothbrush": {
+      "name": "Diş Fırçası",
+      "description": "Diş temizliği için kullanılan alet.",
+      "features": "Fırça kılları, sap, baş",
+      "usage": "Diş temizliği",
+      "interesting_facts": "İlk diş fırçası 1498'de icat edildi."
     }
   }
 }
