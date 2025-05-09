@@ -22,7 +22,7 @@ VIDEO_FOLDER = "video"
 JSON_PATH = "object_info.json"
 CONFIDENCE_THRESHOLD = 0.6
 SOUND_COOLDOWN = 2.0
-LM_STUDIO_BASE_URL = "http://10.52.15.98:40"
+LM_STUDIO_BASE_URL = "http://192.168.56.1:40"
 LM_STUDIO_URL = f"{LM_STUDIO_BASE_URL}/v1/chat/completions"
 
 # --- ÖZEL WIDGET'LAR ---
