@@ -23,3 +23,45 @@
 [2025-05-09 10:44:35] [ERROR] Video error: 'NoneType' object has no attribute 'read'
 [2025-05-09 10:44:37] [ERROR] Video error: 'NoneType' object has no attribute 'read'
 [2025-05-09 10:44:50] [INFO] Application closed
+[2025-05-09 10:48:54] [INFO] Application started
+[2025-05-09 10:49:10] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:49:11] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:49:11] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:49:11] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:49:11] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:49:33] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:49:34] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:51:13] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:51:23] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:51:33] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:51:43] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:51:53] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:52:03] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:52:13] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:52:23] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:52:33] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:52:44] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:52:54] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:53:04] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:53:14] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:54:03] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:54:04] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-09 10:54:13] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:54:23] [INFO] Application closed
+[2025-05-09 10:54:23] [ERROR] Chat error: LM Studio error: HTTPConnectionPool(host='10.52.15.98', port=40): Read timed out. (read timeout=10)
+[2025-05-09 10:55:47] [INFO] Application started
+[2025-05-09 10:56:23] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:56:23] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:56:24] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:56:28] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:56:29] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 10:56:32] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-09 10:56:55] [INFO] Application closed
+[2025-05-09 11:08:07] [INFO] Application started
+[2025-05-09 11:08:25] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 11:08:27] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 11:08:29] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-09 11:09:27] [INFO] Application closed
+[2025-05-09 11:11:19] [INFO] Application started
+[2025-05-09 11:11:34] [INFO] Application closed
+[2025-05-09 11:14:47] [INFO] Application started

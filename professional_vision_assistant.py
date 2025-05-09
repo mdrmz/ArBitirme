@@ -44,9 +44,10 @@ SETTINGS_FILE = "app_settings.json"
 LOG_FILE = "app_log.txt"
 SCREENSHOT_FOLDER = "screenshots"
 RECORDING_FOLDER = "recordings"
+MODELS_FOLDER = "models"
 
 # Create necessary folders
-for folder in [SCREENSHOT_FOLDER, RECORDING_FOLDER]:
+for folder in [SCREENSHOT_FOLDER, RECORDING_FOLDER, MODELS_FOLDER, VIDEO_FOLDER]:
     Path(folder).mkdir(exist_ok=True)
 
 # Gradient color definitions for UI
@@ -88,7 +89,8 @@ def get_available_models():
             return [model['id'] for model in models.get('data', [])]
         return []
     except Exception as e:
-        print(f"Model list error: {e}")
+        # Bağlantı hatalarını sessizce logla
+        log_message(f"LM Studio model list error: {e}", "ERROR")
         return []
 
 def load_json_data(json_path):
@@ -287,13 +289,26 @@ class DetectionThread(QThread):
         try:
             # Load YOLO model
             self.model = YOLO(self.model_path)
-            self.cap = cv2.VideoCapture(self.camera_index)
+            
+            # Kamera bağlantısını dene
+            self.cap = cv2.VideoCapture(self.camera_index, cv2.CAP_DSHOW)  # DirectShow kullan
             if not self.cap.isOpened():
                 raise Exception(f"Failed to open camera {self.camera_index}")
+            
+            # Kamera ayarlarını optimize et
+            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+            self.cap.set(cv2.CAP_PROP_FPS, 30)
             
             while self.running:
                 ret, frame = self.cap.read()
                 if not ret:
+                    # Kamera hatası durumunda yeniden bağlanmayı dene
+                    self.cap.release()
+                    time.sleep(1)  # 1 saniye bekle
+                    self.cap = cv2.VideoCapture(self.camera_index, cv2.CAP_DSHOW)
+                    if not self.cap.isOpened():
+                        raise Exception("Camera reconnection failed")
                     continue
                 
                 # Convert BGR to RGB (for Qt display)
@@ -423,7 +438,8 @@ class SoundThread(QThread):
             if self.queue:
                 label = self.queue.pop(0)
                 try:
-                    ses(f"Tespit edilen nesne: {label}")
+                    ses(f"object detected: {label} ")
+                    ses("locked on targets")
                 except Exception as e:
                     print(f"Sound error: {e}")
             time.sleep(0.1)
@@ -443,7 +459,8 @@ class LMStudioChatThread(QThread):
         self.queue = []
         self.model_name = None
         self.json_data = {}
-        
+        self.connection_error = False
+    
     def set_model(self, model_name):
         self.model_name = model_name
         
@@ -466,67 +483,107 @@ class LMStudioChatThread(QThread):
                 class_name = query_data['class_name']
                 
                 try:
-                    # Prepare prompt based on query type
+                    # Önce JSON'dan hızlı yanıt ver
                     if query_type == 'object_info':
-                        # Get object info from JSON if available
                         object_info = self.get_object_info(class_name)
-                        
-                        # Prepare system prompt
-                        prompt = f"""Sen bir nesne tanıma asistanısın. Aşağıdaki bilgileri kullanarak 
-                        '{class_name}' hakkında detaylı bir açıklama yap. Eğlenceli, bilgilendirici ve 
-                        ilgi çekici ol. Bir öğretmen gibi açıkla.
-                        
-                        Nesne bilgileri: {object_info}
-                        """
-                    else:  # custom query
-                        custom_query = query_data['custom_query']
-                        # Prepare system prompt
-                        prompt = f"""Bu bir nesne tanıma sistemidir. Şu nesne tespit edildi: '{class_name}'
-                        
-                        Kullanıcı sorusu: {custom_query}
-                        
-                        Bu nesne hakkında kullanıcının sorusuna net ve bilgilendirici bir yanıt ver.
-                        """
-                    
-                    # Make API request
-                    headers = {"Content-Type": "application/json"}
-                    data = {
-                        "model": self.model_name,
-                        "messages": [
-                            {"role": "system", "content": "Sen bir nesne tanıma ve bilgilendirme asistanısın."},
-                            {"role": "user", "content": prompt}
-                        ],
-                        "temperature": 0.7,
-                        "max_tokens": 1000
-                    }
-                    
-                    response = requests.post(
-                        LM_STUDIO_URL, 
-                        headers=headers, 
-                        json=data,
-                        timeout=10
-                    )
-                    
-                    if response.status_code == 200:
-                        response_data = response.json()
-                        assistant_message = response_data['choices'][0]['message']['content']
-                        self.response_ready.emit(assistant_message, query_type)
+                        if object_info:
+                            # JSON'dan hızlı yanıt
+                            quick_response = self.get_quick_response(class_name, object_info)
+                            self.response_ready.emit(quick_response, query_type)
                     else:
-                        error_message = f"API error: {response.status_code}, {response.text}"
-                        self.error_occurred.emit(error_message)
-                        
-                        # Fallback to JSON data
-                        fallback_info = self.get_fallback_message(class_name)
-                        self.response_ready.emit(fallback_info, query_type)
+                        custom_query = query_data['custom_query']
+                        # JSON'dan hızlı yanıt
+                        quick_response = self.get_custom_quick_response(class_name, custom_query)
+                        self.response_ready.emit(quick_response, query_type)
+                    
+                    # Arka planda LM Studio'dan detaylı yanıt al
+                    self.get_detailed_response(query_type, class_name, query_data.get('custom_query'))
                     
                 except Exception as e:
-                    self.error_occurred.emit(f"LM Studio error: {str(e)}")
-                    
-                    # Fallback to JSON data
-                    fallback_info = self.get_fallback_message(class_name)
-                    self.response_ready.emit(fallback_info, query_type)
+                    self.error_occurred.emit(str(e))
             
             time.sleep(0.1)
+    
+    def get_quick_response(self, class_name, object_info):
+        """JSON verilerinden hızlı yanıt oluştur"""
+        if class_name in self.json_data:
+            obj_info = self.json_data[class_name]
+            return f"""
+            <b>{obj_info.get('name', class_name)}</b>
+            
+            <p><b>Tanım:</b> {obj_info.get('description', 'Bilgi bulunamadı')}</p>
+            
+            <p><b>Özellikler:</b> {obj_info.get('features', 'Bilgi bulunamadı')}</p>
+            
+            <p><b>Kullanım:</b> {obj_info.get('usage', 'Bilgi bulunamadı')}</p>
+            
+            <p><b>İlginç Bilgi:</b> {obj_info.get('interesting_facts', 'Bilgi bulunamadı')}</p>
+            """
+        return f"'{class_name}' hakkında bilgi bulunamadı."
+    
+    def get_custom_quick_response(self, class_name, custom_query):
+        """Özel sorular için JSON'dan hızlı yanıt oluştur"""
+        if class_name in self.json_data:
+            obj_info = self.json_data[class_name]
+            # Soruya göre en uygun bilgiyi seç
+            if "ne" in custom_query.lower() or "nedir" in custom_query.lower():
+                return f"{obj_info.get('description', 'Bilgi bulunamadı')}"
+            elif "özellik" in custom_query.lower():
+                return f"{obj_info.get('features', 'Bilgi bulunamadı')}"
+            elif "kullanım" in custom_query.lower() or "nasıl" in custom_query.lower():
+                return f"{obj_info.get('usage', 'Bilgi bulunamadı')}"
+            elif "ilginç" in custom_query.lower():
+                return f"{obj_info.get('interesting_facts', 'Bilgi bulunamadı')}"
+            else:
+                return f"{obj_info.get('description', 'Bilgi bulunamadı')}"
+        return f"'{class_name}' hakkında bilgi bulunamadı."
+    
+    def get_detailed_response(self, query_type, class_name, custom_query=None):
+        """LM Studio'dan detaylı yanıt al (arka planda)"""
+        try:
+            if query_type == 'object_info':
+                object_info = self.get_object_info(class_name)
+                prompt = f"""Sen bir nesne tanıma asistanısın. Aşağıdaki bilgileri kullanarak 
+                '{class_name}' hakkında detaylı bir açıklama yap. Eğlenceli, bilgilendirici ve 
+                ilgi çekici ol. Bir öğretmen gibi açıkla.
+                
+                Nesne bilgileri: {object_info}
+                """
+            else:
+                prompt = f"""Bu bir nesne tanıma sistemidir. Şu nesne tespit edildi: '{class_name}'
+                
+                Kullanıcı sorusu: {custom_query}
+                
+                Bu nesne hakkında kullanıcının sorusuna net ve bilgilendirici bir yanıt ver.
+                """
+            
+            # LM Studio'dan yanıt al
+            headers = {"Content-Type": "application/json"}
+            data = {
+                "model": self.model_name,
+                "messages": [
+                    {"role": "system", "content": "Sen bir nesne tanıma ve bilgilendirme asistanısın."},
+                    {"role": "user", "content": prompt}
+                ],
+                "temperature": 0.7,
+                "max_tokens": 1000
+            }
+            
+            response = requests.post(
+                LM_STUDIO_URL, 
+                headers=headers, 
+                json=data,
+                timeout=3
+            )
+            
+            if response.status_code == 200:
+                response_data = response.json()
+                assistant_message = response_data['choices'][0]['message']['content']
+                self.response_ready.emit(assistant_message, query_type)
+                self.connection_error = False
+            
+        except Exception as e:
+            log_message(f"LM Studio detailed response error: {str(e)}", "ERROR")
     
     def get_object_info(self, class_name):
         """Get object info from JSON data"""
@@ -534,23 +591,6 @@ class LMStudioChatThread(QThread):
             obj_info = self.json_data[class_name]
             return json.dumps(obj_info)
         return "{}"
-    
-    def get_fallback_message(self, class_name):
-        """Create fallback message from JSON when LM Studio fails"""
-        if class_name in self.json_data:
-            obj_info = self.json_data[class_name]
-            return f"""
-            {obj_info.get('name', class_name)} hakkında bilgi:
-            
-            Tanım: {obj_info.get('description', 'Bilgi bulunamadı')}
-            
-            Özellikler: {obj_info.get('features', 'Bilgi bulunamadı')}
-            
-            Kullanım: {obj_info.get('usage', 'Bilgi bulunamadı')}
-            
-            İlginç Bilgi: {obj_info.get('interesting_facts', 'Bilgi bulunamadı')}
-            """
-        return f"'{class_name}' hakkında bilgi bulunamadı."
     
     def stop(self):
         self.running = False
@@ -831,6 +871,7 @@ class ProfessionalVisionAssistant(QMainWindow):
         self.lm_studio_models = get_available_models()
         self.current_class = None
         self.confidence_threshold = self.settings["confidence_threshold"]
+        self.current_model_path = MODEL_PATH
         
         # Initialize recording
         self.recording = False
@@ -946,8 +987,11 @@ class ProfessionalVisionAssistant(QMainWindow):
         controls_layout = QGridLayout(controls_frame)
         
         # Model selection
-        model_label = QLabel("LM Studio Modeli:")
+        model_label = QLabel("YOLO Modeli:")
         model_label.setStyleSheet("color: #E0E0E0;")
+        
+        model_layout = QHBoxLayout()
+        
         self.model_combo = QComboBox()
         self.model_combo.addItems(self.lm_studio_models)
         self.model_combo.setStyleSheet("""
@@ -967,41 +1011,14 @@ class ProfessionalVisionAssistant(QMainWindow):
         """)
         self.model_combo.currentTextChanged.connect(self.on_model_changed)
         
-        # Confidence threshold
-        conf_label = QLabel("Güven Eşiği:")
-        conf_label.setStyleSheet("color: #E0E0E0;")
-        self.conf_slider = QSlider(Qt.Horizontal)
-        self.conf_slider.setMinimum(1)
-        self.conf_slider.setMaximum(100)
-        self.conf_slider.setValue(int(self.confidence_threshold * 100))
-        self.conf_slider.setStyleSheet("""
-            QSlider::groove:horizontal {
-                border: 1px solid #999999;
-                height: 8px;
-                background: #3C6E71;
-                margin: 2px 0;
-                border-radius: 4px;
-            }
-            QSlider::handle:horizontal {
-                background: #A0C8E5;
-                border: 1px solid #5c5c5c;
-                width: 18px;
-                margin: -2px 0;
-                border-radius: 9px;
-            }
-        """)
-        self.conf_slider.valueChanged.connect(self.on_confidence_changed)
+        self.select_model_button = AnimatedButton("Model Seç")
+        self.select_model_button.clicked.connect(self.select_yolo_model)
         
-        # Settings button
-        self.settings_button = AnimatedButton("Ayarlar")
-        self.settings_button.clicked.connect(self.show_settings)
+        model_layout.addWidget(self.model_combo)
+        model_layout.addWidget(self.select_model_button)
         
-        # Add controls to layout
         controls_layout.addWidget(model_label, 0, 0)
-        controls_layout.addWidget(self.model_combo, 0, 1)
-        controls_layout.addWidget(conf_label, 1, 0)
-        controls_layout.addWidget(self.conf_slider, 1, 1)
-        controls_layout.addWidget(self.settings_button, 2, 0, 1, 2)
+        controls_layout.addLayout(model_layout, 0, 1)
         
         left_panel.addWidget(controls_frame)
         
@@ -1140,59 +1157,79 @@ class ProfessionalVisionAssistant(QMainWindow):
     
     def update_detection_frame(self, frame, detections):
         """Update the camera feed with detections"""
-        if frame is not None:
-            # Save frame for recording if enabled
-            if self.recording and self.video_writer is not None:
-                self.video_writer.write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+        try:
+            if frame is not None:
+                # Save frame for recording if enabled
+                if self.recording and self.video_writer is not None:
+                    try:
+                        self.video_writer.write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+                    except Exception as e:
+                        log_message(f"Recording error: {str(e)}", "ERROR")
+                
+                # Convert to pixmap and display
+                pixmap = convert_cv_qt(frame)
+                scaled_pixmap = pixmap.scaled(
+                    640, 480,  # Sabit boyut
+                    Qt.KeepAspectRatio,
+                    Qt.SmoothTransformation
+                )
+                self.camera_label.setPixmap(scaled_pixmap)
+                self.last_frame = frame
             
-            # Convert to pixmap and display
-            pixmap = convert_cv_qt(frame)
-            scaled_pixmap = pixmap.scaled(
-                640, 480,  # Sabit boyut
-                Qt.KeepAspectRatio,
-                Qt.SmoothTransformation
-            )
-            self.camera_label.setPixmap(scaled_pixmap)
-            self.last_frame = frame
-        
-        if detections:
-            # Get the detection with highest confidence
-            best_detection = max(detections, key=lambda x: x['confidence'])
-            class_name = best_detection['class_name']
-            
-            # Update object info
-            if class_name != self.current_class:
-                self.current_class = class_name
-                self.update_object_info(class_name)
+            if detections:
+                # Get the detection with highest confidence
+                best_detection = max(detections, key=lambda x: x['confidence'])
+                class_name = best_detection['class_name']
                 
-                # Play sound if enabled
-                if self.settings["sound_enabled"]:
-                    self.sound_thread.add_to_queue(class_name)
-                
-                # Play video if available
-                if class_name in self.video_map:
-                    video_path = self.video_map[class_name]
-                    self.video_thread.set_video(video_path)
-                    self.video_label.setText(f"{class_name} görselleştirmesi gösteriliyor...")
+                # Update object info
+                if class_name != self.current_class:
+                    self.current_class = class_name
+                    self.update_object_info(class_name)
+                    
+                    # Play sound if enabled
+                    if self.settings["sound_enabled"]:
+                        try:
+                            self.sound_thread.add_to_queue(class_name)
+                        except Exception as e:
+                            log_message(f"Sound error: {str(e)}", "ERROR")
+                    
+                    # Play video if available
+                    if class_name in self.video_map:
+                        try:
+                            video_path = self.video_map[class_name]
+                            self.video_thread.set_video(video_path)
+                            self.video_label.setText(f"{class_name} görselleştirmesi gösteriliyor...")
+                        except Exception as e:
+                            log_message(f"Video playback error: {str(e)}", "ERROR")
+                            self.video_label.setText(f"{class_name} için 3D model yüklenmemiş.\nYeni model eklemek için '3D Model Yükle' butonunu kullanabilirsiniz.")
+                    else:
+                        self.video_label.setText(f"{class_name} için 3D model yüklenmemiş.\nYeni model eklemek için '3D Model Yükle' butonunu kullanabilirsiniz.")
                     self.load_model_button.setEnabled(True)
-                else:
-                    self.video_label.setText(f"{class_name} için 3D model yüklenmemiş.\nYeni model eklemek için '3D Model Yükle' butonunu kullanabilirsiniz.")
-                    self.load_model_button.setEnabled(True)
-                
-                # Auto save screenshot if enabled
-                if self.settings["auto_save_screenshots"]:
-                    self.take_screenshot()
+                    
+                    # Auto save screenshot if enabled
+                    if self.settings["auto_save_screenshots"]:
+                        try:
+                            self.take_screenshot()
+                        except Exception as e:
+                            log_message(f"Screenshot error: {str(e)}", "ERROR")
+        except Exception as e:
+            log_message(f"Frame update error: {str(e)}", "ERROR")
     
     def update_video_frame(self, frame):
         """Update the video display"""
-        if frame is not None:
-            pixmap = convert_cv_qt(frame)
-            scaled_pixmap = pixmap.scaled(
-                320, 240,  # Video boyutu
-                Qt.KeepAspectRatio,
-                Qt.SmoothTransformation
-            )
-            self.video_label.setPixmap(scaled_pixmap)
+        try:
+            if frame is not None:
+                pixmap = convert_cv_qt(frame)
+                scaled_pixmap = pixmap.scaled(
+                    320, 240,  # Video boyutu
+                    Qt.KeepAspectRatio,
+                    Qt.SmoothTransformation
+                )
+                self.video_label.setPixmap(scaled_pixmap)
+        except Exception as e:
+            # Video frame hatalarını sessizce logla
+            log_message(f"Video frame error: {str(e)}", "ERROR")
+            self.video_label.setText("Görselleştirme şu anda kullanılamıyor.")
     
     def update_object_info(self, class_name):
         """Update object information panel"""
@@ -1284,44 +1321,92 @@ class ProfessionalVisionAssistant(QMainWindow):
     
     def show_settings(self):
         """Show settings dialog"""
-        dialog = SettingsDialog(self)
-        if dialog.exec():
-            # Reload settings
-            self.settings = load_settings()
-            
-            # Update UI
-            self.confidence_threshold = self.settings["confidence_threshold"]
-            self.conf_slider.setValue(int(self.confidence_threshold * 100))
-            
-            # Update camera if changed
-            if self.detection_thread.camera_index != self.settings["camera_index"]:
-                self.detection_thread.stop()
-                self.detection_thread = DetectionThread(
-                    MODEL_PATH,
-                    self.settings["camera_index"],
-                    self.confidence_threshold
-                )
-                self.detection_thread.frame_ready.connect(self.update_detection_frame)
-                self.detection_thread.error_occurred.connect(self.handle_detection_error)
-                self.detection_thread.start()
-            
-            # Apply theme
-            apply_style_sheet(self, "dark" if self.settings["dark_mode"] else "light")
+        try:
+            dialog = SettingsDialog(self)
+            if dialog.exec():
+                # Mevcut ayarları yedekle
+                old_settings = self.settings.copy()
+                
+                # Yeni ayarları yükle
+                self.settings = load_settings()
+                
+                # Kamera değişikliği kontrolü
+                if old_settings["camera_index"] != self.settings["camera_index"]:
+                    # Mevcut detection thread'i durdur
+                    if hasattr(self, 'detection_thread'):
+                        self.detection_thread.stop()
+                        self.detection_thread.wait()  # Thread'in durmasını bekle
+                    
+                    # Yeni detection thread başlat
+                    self.detection_thread = DetectionThread(
+                        self.current_model_path,
+                        self.settings["camera_index"],
+                        self.settings["confidence_threshold"]
+                    )
+                    self.detection_thread.frame_ready.connect(self.update_detection_frame)
+                    self.detection_thread.error_occurred.connect(self.handle_detection_error)
+                    self.detection_thread.start()
+                
+                # Güven eşiği değişikliği
+                if old_settings["confidence_threshold"] != self.settings["confidence_threshold"]:
+                    self.confidence_threshold = self.settings["confidence_threshold"]
+                    if hasattr(self, 'detection_thread'):
+                        self.detection_thread.conf_threshold = self.confidence_threshold
+                
+                # Tema değişikliği
+                if old_settings["dark_mode"] != self.settings["dark_mode"]:
+                    apply_style_sheet(self, "dark" if self.settings["dark_mode"] else "light")
+                
+                # Ses ayarları değişikliği
+                if old_settings["sound_enabled"] != self.settings["sound_enabled"]:
+                    if not self.settings["sound_enabled"]:
+                        self.sound_thread.queue.clear()
+                
+                # Otomatik kayıt değişikliği
+                if old_settings["recording_enabled"] != self.settings["recording_enabled"]:
+                    if self.recording and not self.settings["recording_enabled"]:
+                        self.toggle_recording()  # Kaydı durdur
+                
+                QMessageBox.information(self, "Başarılı", "Ayarlar başarıyla güncellendi!")
+                
+        except Exception as e:
+            QMessageBox.critical(self, "Hata", f"Ayarlar güncellenirken hata oluştu: {str(e)}")
+            log_message(f"Settings update error: {str(e)}", "ERROR")
+            # Hata durumunda eski ayarları geri yükle
+            self.settings = old_settings
+            save_settings(self.settings)
     
     def handle_detection_error(self, error_msg):
         """Handle detection thread errors"""
         log_message(f"Detection error: {error_msg}", "ERROR")
-        QMessageBox.critical(self, "Hata", f"Nesne algılama hatası: {error_msg}")
+        
+        # Kritik hataları göster
+        if "camera" in error_msg.lower():
+            QMessageBox.warning(self, "Kamera Hatası", 
+                              "Kamera bağlantısında sorun oluştu. Lütfen ayarlardan kamera seçimini kontrol edin.")
+            self.camera_label.setText("Kamera bağlantı hatası.\nLütfen ayarları kontrol edin.")
+            
+        elif "model" in error_msg.lower():
+            QMessageBox.warning(self, "Model Hatası", 
+                              "Model yüklenirken hata oluştu. Lütfen model dosyasını kontrol edin.")
+            self.camera_label.setText("Model yükleme hatası.\nLütfen model seçimini kontrol edin.")
+            
+        else:
+            # Diğer hataları sessizce logla
+            log_message(f"Silent error: {error_msg}", "ERROR")
+            self.camera_label.setText("Bir hata oluştu. Lütfen ayarları kontrol edin.")
     
     def handle_video_error(self, error_msg):
         """Handle video thread errors"""
         log_message(f"Video error: {error_msg}", "ERROR")
-        QMessageBox.warning(self, "Uyarı", f"Video oynatma hatası: {error_msg}")
+        # Video hatalarını sessizce logla ve ekranda gösterme
+        self.video_label.setText("Görselleştirme şu anda kullanılamıyor.")
     
     def handle_chat_error(self, error_msg):
         """Handle chat thread errors"""
         log_message(f"Chat error: {error_msg}", "ERROR")
-        QMessageBox.warning(self, "Uyarı", f"LM Studio hatası: {error_msg}")
+        # Chat hatalarını sessizce logla ve ekranda gösterme
+        self.chat_history.append("<b>Sistem:</b> Bağlantı hatası. Lütfen daha sonra tekrar deneyin.")
     
     def closeEvent(self, event):
         """Handle window close event"""
@@ -1354,7 +1439,7 @@ class ProfessionalVisionAssistant(QMainWindow):
             if selected_files:
                 model_path = selected_files[0]
                 # Model klasörünü oluştur
-                model_dir = Path("models") / self.current_class
+                model_dir = Path(MODELS_FOLDER) / self.current_class
                 model_dir.mkdir(parents=True, exist_ok=True)
                 
                 # Modeli kopyala
@@ -1368,6 +1453,54 @@ class ProfessionalVisionAssistant(QMainWindow):
                 # Modeli göster
                 self.video_thread.set_video(str(target_path))
                 self.video_label.setText(f"{self.current_class} görselleştirmesi yüklendi ve gösteriliyor...")
+
+    def select_yolo_model(self):
+        """YOLO model dosyası seçme dialog'u"""
+        try:
+            file_dialog = QFileDialog()
+            file_dialog.setFileMode(QFileDialog.ExistingFile)
+            file_dialog.setNameFilter("YOLO Model Files (*.pt)")
+            
+            if file_dialog.exec():
+                selected_files = file_dialog.selectedFiles()
+                if selected_files:
+                    model_path = selected_files[0]
+                    
+                    # Model dosyasını kontrol et
+                    if not os.path.exists(model_path):
+                        QMessageBox.warning(self, "Hata", "Seçilen model dosyası bulunamadı!")
+                        return
+                    
+                    # Modeli models klasörüne kopyala
+                    target_path = Path(MODELS_FOLDER) / Path(model_path).name
+                    import shutil
+                    shutil.copy2(model_path, target_path)
+                    
+                    # Mevcut detection thread'i durdur
+                    if hasattr(self, 'detection_thread'):
+                        self.detection_thread.stop()
+                        self.detection_thread.wait()  # Thread'in durmasını bekle
+                    
+                    # Yeni modeli ayarla
+                    self.current_model_path = str(target_path)
+                    
+                    # Yeni detection thread başlat
+                    self.detection_thread = DetectionThread(
+                        self.current_model_path,
+                        self.settings["camera_index"],
+                        self.confidence_threshold
+                    )
+                    self.detection_thread.frame_ready.connect(self.update_detection_frame)
+                    self.detection_thread.error_occurred.connect(self.handle_detection_error)
+                    self.detection_thread.start()
+                    
+                    # Bilgilendirme mesajı
+                    self.camera_label.setText("Yeni model yüklendi. Kamera başlatılıyor...")
+                    QMessageBox.information(self, "Başarılı", "Model başarıyla değiştirildi!")
+                    
+        except Exception as e:
+            QMessageBox.critical(self, "Hata", f"Model değiştirme hatası: {str(e)}")
+            log_message(f"Model change error: {str(e)}", "ERROR")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

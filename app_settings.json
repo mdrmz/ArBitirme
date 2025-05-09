@@ -1,0 +1,11 @@
+{
+    "camera_index": 0,
+    "confidence_threshold": 0.6,
+    "sound_enabled": true,
+    "video_enabled": true,
+    "dark_mode": true,
+    "font_size": "k\u00fc\u00e7\u00fck",
+    "language": "tr",
+    "auto_save_screenshots": false,
+    "recording_enabled": false
+}
