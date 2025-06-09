@@ -7,5 +7,6 @@
     "font_size": "k\u00fc\u00e7\u00fck",
     "language": "tr",
     "auto_save_screenshots": false,
-    "recording_enabled": false
+    "recording_enabled": false,
+    "model_path": "yolov8n.pt"
 }

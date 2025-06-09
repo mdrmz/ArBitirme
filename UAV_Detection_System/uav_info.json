@@ -1,0 +1,32 @@
+{
+    "objects": {
+        "airplane": {
+            "name": "Uçak",
+            "description": "Havada uçan, kanatlı, motorlu büyük hava aracı",
+            "features": "Sabit kanatlı, yüksek hızlı, uzun menzilli",
+            "threat_level": "Orta",
+            "interesting_facts": "İlk uçak 1903'te Wright Kardeşler tarafından uçuruldu"
+        },
+        "bird": {
+            "name": "Kuş",
+            "description": "Doğal uçan canlı, kanatlı hayvan",
+            "features": "Doğal uçuş yeteneği, hafif yapı",
+            "threat_level": "Düşük",
+            "interesting_facts": "Kuşlar havada en uzun süre kalabilen canlılardır"
+        },
+        "drone": {
+            "name": "İnsansız Hava Aracı (Drone)",
+            "description": "Uzaktan kumandalı küçük hava aracı",
+            "features": "Çoklu pervaneli, manevra kabiliyeti yüksek",
+            "threat_level": "Yüksek",
+            "interesting_facts": "Modern dronlar GPS ve otonom uçuş yeteneğine sahiptir"
+        },
+        "uav": {
+            "name": "İnsansız Hava Aracı (UAV)",
+            "description": "Otonom veya uzaktan kumandalı askeri hava aracı",
+            "features": "Yüksek dayanıklılık, uzun menzil, gelişmiş sensörler",
+            "threat_level": "Çok Yüksek",
+            "interesting_facts": "Modern UAV'ler saatlerce havada kalabilir ve yüksek irtifada uçabilir"
+        }
+    }
+} 

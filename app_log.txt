@@ -65,3 +65,170 @@
 [2025-05-09 11:11:19] [INFO] Application started
 [2025-05-09 11:11:34] [INFO] Application closed
 [2025-05-09 11:14:47] [INFO] Application started
+[2025-05-09 13:12:26] [INFO] Application started
+[2025-05-09 13:12:34] [INFO] Application closed
+[2025-05-09 13:13:23] [INFO] Application started
+[2025-05-09 13:13:50] [INFO] Application closed
+[2025-05-09 13:15:15] [INFO] Application started
+[2025-05-09 13:17:05] [INFO] Application started
+[2025-05-09 13:20:04] [INFO] Application started
+[2025-05-09 13:20:55] [INFO] Application closed
+[2025-05-09 13:20:55] [ERROR] Detection error: Kamera başlatılamadı
+[2025-05-09 13:20:55] [ERROR] Silent error: Kamera başlatılamadı
+[2025-05-09 13:33:37] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EFFC7A5550>: Failed to establish a new connection: [WinError 10061] Hedef makine etkin olarak reddettiğinden bağlantı kurulamadı'))
+[2025-05-09 13:33:37] [INFO] Application started
+[2025-05-09 13:33:56] [INFO] Model yükleme hatası: name 'shutil' is not defined
+[2025-05-09 13:34:05] [INFO] Model yükleme hatası: name 'shutil' is not defined
+[2025-05-09 13:34:11] [INFO] Model yükleme hatası: name 'shutil' is not defined
+[2025-05-09 13:36:10] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000263573EFFD0>: Failed to establish a new connection: [WinError 10061] Hedef makine etkin olarak reddettiğinden bağlantı kurulamadı'))
+[2025-05-09 13:36:10] [INFO] Application started
+[2025-05-09 13:36:14] [ERROR] Frame update error: 'ProfessionalVisionAssistant' object has no attribute 'update_object_info'
+[2025-05-09 13:39:55] [ERROR] Frame update error: 'ProfessionalVisionAssistant' object has no attribute 'update_object_info'
+[2025-05-09 13:39:55] [ERROR] Frame update error: 'ProfessionalVisionAssistant' object has no attribute 'update_object_info'
+[2025-05-09 13:40:04] [INFO] Application closed
+[2025-05-09 13:40:38] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000027A72ACC890>: Failed to establish a new connection: [WinError 10061] Hedef makine etkin olarak reddettiğinden bağlantı kurulamadı'))
+[2025-05-09 13:40:38] [INFO] Application started
+[2025-05-09 13:45:39] [INFO] Application closed
+[2025-05-09 13:47:04] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000014FA06BCC10>: Failed to establish a new connection: [WinError 10061] Hedef makine etkin olarak reddettiğinden bağlantı kurulamadı'))
+[2025-05-09 13:47:04] [INFO] Application started
+[2025-05-09 13:48:57] [INFO] Application closed
+[2025-05-09 13:50:29] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001FEDC32C9D0>: Failed to establish a new connection: [WinError 10061] Hedef makine etkin olarak reddettiğinden bağlantı kurulamadı'))
+[2025-05-09 13:50:29] [INFO] Application started
+[2025-05-09 13:52:40] [INFO] Application closed
+[2025-05-09 13:52:55] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000204176D2890>: Failed to establish a new connection: [WinError 10061] Hedef makine etkin olarak reddettiğinden bağlantı kurulamadı'))
+[2025-05-09 13:52:55] [INFO] Application started
+[2025-05-09 13:53:37] [INFO] Application closed
+[2025-05-10 01:46:54] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000020EDBCAC410>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-10 01:46:54] [INFO] Application started
+[2025-05-10 01:47:49] [INFO] Application closed
+[2025-05-10 01:48:14] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000016832B2C410>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-10 01:48:14] [INFO] Application started
+[2025-05-10 01:49:00] [INFO] Application closed
+[2025-05-10 13:43:19] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001DA12518F10>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-10 13:43:19] [INFO] Application started
+[2025-05-10 13:43:47] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-10 13:43:47] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-10 13:43:47] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:43:48] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:43:49] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:43:50] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:43:51] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:44:33] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:44:35] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:44:36] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-10 13:44:36] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-10 13:44:44] [INFO] Application closed
+[2025-05-18 18:06:09] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001C9D713BB50>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-18 18:06:09] [INFO] Application started
+[2025-05-18 18:06:15] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:16] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:16] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:16] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:17] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:06:19] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:06:19] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:06:19] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:30] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:31] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:31] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:32] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:06:32] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:06:32] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:05] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:06] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:06] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:07] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:07] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:08] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:08] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:09] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:07:10] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:12] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:12] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:13] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:13] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:14] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:07:15] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:07:21] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:21] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:24] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:07:25] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:31] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:32] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:32] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:35] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:35] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:36] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:36] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:36] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:37] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:37] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:37] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:43] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:07:45] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:45] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:07:46] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:00] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:08:01] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-18 18:08:01] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:10] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:13] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:14] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:24] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:24] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:24] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-18 18:08:34] [INFO] Application closed
+[2025-05-21 12:48:21] [INFO] Application started
+[2025-05-21 12:49:26] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:30] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-21 12:49:30] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:30] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:30] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:30] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:30] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:31] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-21 12:49:31] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:32] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:38] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:49:39] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-21 12:49:39] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:50:13] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:51:08] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-21 12:51:08] [ERROR] Video error: 'NoneType' object has no attribute 'set'
+[2025-05-21 12:51:09] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:51:25] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:51:26] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:51:27] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:51:43] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:51:54] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:33] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:33] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:33] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:34] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:34] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:36] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:56] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:52:57] [ERROR] Video error: 'NoneType' object has no attribute 'read'
+[2025-05-21 12:53:55] [INFO] Application closed
+[2025-05-25 12:39:19] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000017A8BB61610>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-25 12:39:19] [INFO] Application started
+[2025-05-25 12:39:21] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001A3E5040C90>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-25 12:39:21] [INFO] Application started
+[2025-05-25 12:39:22] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000230FF84E450>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-25 12:39:22] [INFO] Application started
+[2025-05-25 12:39:22] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001C7280F3D50>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-25 12:39:22] [INFO] Application started
+[2025-05-25 12:39:30] [INFO] Application closed
+[2025-05-25 12:39:31] [INFO] Application closed
+[2025-05-25 12:39:33] [INFO] Application closed
+[2025-05-25 12:39:35] [INFO] Application closed
+[2025-05-25 12:40:40] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001B830EE4AD0>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-25 12:40:40] [INFO] Application started
+[2025-05-25 13:27:17] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001FC1DF213D0>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-05-25 13:27:17] [INFO] Application started
+[2025-05-25 13:27:30] [INFO] Application closed
+[2025-06-07 10:54:40] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001DC120BCA10>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-06-07 10:54:40] [INFO] Application started
+[2025-06-07 10:55:49] [ERROR] LM Studio model list error: HTTPConnectionPool(host='10.52.15.98', port=40): Max retries exceeded with url: /v1/models (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001FA8F421250>, 'Connection to 10.52.15.98 timed out. (connect timeout=5)'))
+[2025-06-07 10:55:49] [INFO] Application started
+[2025-06-07 10:56:02] [INFO] Application closed

@@ -24,6 +24,8 @@ from PySide6.QtWidgets import (QApplication, QWidget, QLabel, QVBoxLayout,
                              QGraphicsDropShadowEffect)
 from ultralytics import YOLO
 from Sound_Project.Sound import ses, diger
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
 
 # --- Configuration ---
 MODEL_PATH = "yolov8n.pt"
@@ -1321,92 +1323,30 @@ class ProfessionalVisionAssistant(QMainWindow):
     
     def show_settings(self):
         """Show settings dialog"""
-        try:
-            dialog = SettingsDialog(self)
-            if dialog.exec():
-                # Mevcut ayarları yedekle
-                old_settings = self.settings.copy()
-                
-                # Yeni ayarları yükle
-                self.settings = load_settings()
-                
-                # Kamera değişikliği kontrolü
-                if old_settings["camera_index"] != self.settings["camera_index"]:
-                    # Mevcut detection thread'i durdur
-                    if hasattr(self, 'detection_thread'):
-                        self.detection_thread.stop()
-                        self.detection_thread.wait()  # Thread'in durmasını bekle
-                    
-                    # Yeni detection thread başlat
-                    self.detection_thread = DetectionThread(
-                        self.current_model_path,
-                        self.settings["camera_index"],
-                        self.settings["confidence_threshold"]
-                    )
-                    self.detection_thread.frame_ready.connect(self.update_detection_frame)
-                    self.detection_thread.error_occurred.connect(self.handle_detection_error)
-                    self.detection_thread.start()
-                
-                # Güven eşiği değişikliği
-                if old_settings["confidence_threshold"] != self.settings["confidence_threshold"]:
-                    self.confidence_threshold = self.settings["confidence_threshold"]
-                    if hasattr(self, 'detection_thread'):
-                        self.detection_thread.conf_threshold = self.confidence_threshold
-                
-                # Tema değişikliği
-                if old_settings["dark_mode"] != self.settings["dark_mode"]:
-                    apply_style_sheet(self, "dark" if self.settings["dark_mode"] else "light")
-                
-                # Ses ayarları değişikliği
-                if old_settings["sound_enabled"] != self.settings["sound_enabled"]:
-                    if not self.settings["sound_enabled"]:
-                        self.sound_thread.queue.clear()
-                
-                # Otomatik kayıt değişikliği
-                if old_settings["recording_enabled"] != self.settings["recording_enabled"]:
-                    if self.recording and not self.settings["recording_enabled"]:
-                        self.toggle_recording()  # Kaydı durdur
-                
-                QMessageBox.information(self, "Başarılı", "Ayarlar başarıyla güncellendi!")
-                
-        except Exception as e:
-            QMessageBox.critical(self, "Hata", f"Ayarlar güncellenirken hata oluştu: {str(e)}")
-            log_message(f"Settings update error: {str(e)}", "ERROR")
-            # Hata durumunda eski ayarları geri yükle
-            self.settings = old_settings
+        dialog = SettingsDialog(self)
+        if dialog.exec():
+            # Ayarları kaydet ve uygula
+            self.settings = dialog.get_settings()
             save_settings(self.settings)
+            self.apply_settings()
+            log_message("Settings updated", "INFO")
     
     def handle_detection_error(self, error_msg):
         """Handle detection thread errors"""
         log_message(f"Detection error: {error_msg}", "ERROR")
-        
-        # Kritik hataları göster
-        if "camera" in error_msg.lower():
-            QMessageBox.warning(self, "Kamera Hatası", 
-                              "Kamera bağlantısında sorun oluştu. Lütfen ayarlardan kamera seçimini kontrol edin.")
-            self.camera_label.setText("Kamera bağlantı hatası.\nLütfen ayarları kontrol edin.")
-            
-        elif "model" in error_msg.lower():
-            QMessageBox.warning(self, "Model Hatası", 
-                              "Model yüklenirken hata oluştu. Lütfen model dosyasını kontrol edin.")
-            self.camera_label.setText("Model yükleme hatası.\nLütfen model seçimini kontrol edin.")
-            
-        else:
-            # Diğer hataları sessizce logla
-            log_message(f"Silent error: {error_msg}", "ERROR")
-            self.camera_label.setText("Bir hata oluştu. Lütfen ayarları kontrol edin.")
-    
+        self.stop_detection()
+
     def handle_video_error(self, error_msg):
         """Handle video thread errors"""
         log_message(f"Video error: {error_msg}", "ERROR")
-        # Video hatalarını sessizce logla ve ekranda gösterme
-        self.video_label.setText("Görselleştirme şu anda kullanılamıyor.")
-    
+
     def handle_chat_error(self, error_msg):
         """Handle chat thread errors"""
         log_message(f"Chat error: {error_msg}", "ERROR")
-        # Chat hatalarını sessizce logla ve ekranda gösterme
-        self.chat_history.append("<b>Sistem:</b> Bağlantı hatası. Lütfen daha sonra tekrar deneyin.")
+
+    def handle_error(self, error_message):
+        """Handle general errors"""
+        log_message(f"Silent error: {error_message}", "ERROR")
     
     def closeEvent(self, event):
         """Handle window close event"""
@@ -1426,81 +1366,58 @@ class ProfessionalVisionAssistant(QMainWindow):
         event.accept()
 
     def load_3d_model(self):
-        """3D model yükleme dialog'u"""
-        if not self.current_class:
-            return
-        
-        file_dialog = QFileDialog()
-        file_dialog.setFileMode(QFileDialog.ExistingFile)
-        file_dialog.setNameFilter("3D Model Files (*.obj *.fbx *.glb *.gltf)")
-        
-        if file_dialog.exec():
-            selected_files = file_dialog.selectedFiles()
-            if selected_files:
-                model_path = selected_files[0]
-                # Model klasörünü oluştur
-                model_dir = Path(MODELS_FOLDER) / self.current_class
-                model_dir.mkdir(parents=True, exist_ok=True)
-                
-                # Modeli kopyala
-                import shutil
-                target_path = model_dir / Path(model_path).name
-                shutil.copy2(model_path, target_path)
-                
-                # Video map'i güncelle
-                self.video_map[self.current_class] = str(target_path)
-                
-                # Modeli göster
-                self.video_thread.set_video(str(target_path))
-                self.video_label.setText(f"{self.current_class} görselleştirmesi yüklendi ve gösteriliyor...")
+        """Load 3D model for visualization"""
+        try:
+            file_path, _ = QFileDialog.getOpenFileName(
+                self, "3D Model Seç", "", "3D Files (*.obj *.stl *.fbx);;All Files (*)"
+            )
+            if file_path:
+                log_message(f"3D model loaded: {file_path}", "INFO")
+                return file_path
+        except Exception as e:
+            log_message(f"3D model loading error: {str(e)}", "ERROR")
+        return None
 
     def select_yolo_model(self):
-        """YOLO model dosyası seçme dialog'u"""
+        """Select YOLO model file"""
         try:
-            file_dialog = QFileDialog()
-            file_dialog.setFileMode(QFileDialog.ExistingFile)
-            file_dialog.setNameFilter("YOLO Model Files (*.pt)")
-            
-            if file_dialog.exec():
-                selected_files = file_dialog.selectedFiles()
-                if selected_files:
-                    model_path = selected_files[0]
-                    
-                    # Model dosyasını kontrol et
-                    if not os.path.exists(model_path):
-                        QMessageBox.warning(self, "Hata", "Seçilen model dosyası bulunamadı!")
-                        return
-                    
-                    # Modeli models klasörüne kopyala
-                    target_path = Path(MODELS_FOLDER) / Path(model_path).name
-                    import shutil
-                    shutil.copy2(model_path, target_path)
-                    
-                    # Mevcut detection thread'i durdur
-                    if hasattr(self, 'detection_thread'):
-                        self.detection_thread.stop()
-                        self.detection_thread.wait()  # Thread'in durmasını bekle
-                    
-                    # Yeni modeli ayarla
-                    self.current_model_path = str(target_path)
-                    
-                    # Yeni detection thread başlat
-                    self.detection_thread = DetectionThread(
-                        self.current_model_path,
-                        self.settings["camera_index"],
-                        self.confidence_threshold
-                    )
-                    self.detection_thread.frame_ready.connect(self.update_detection_frame)
-                    self.detection_thread.error_occurred.connect(self.handle_detection_error)
-                    self.detection_thread.start()
-                    
-                    # Bilgilendirme mesajı
-                    self.camera_label.setText("Yeni model yüklendi. Kamera başlatılıyor...")
-                    QMessageBox.information(self, "Başarılı", "Model başarıyla değiştirildi!")
-                    
+            file_path, _ = QFileDialog.getOpenFileName(
+                self, "YOLO Model Seç", "", "Model Files (*.pt);;All Files (*)"
+            )
+            if file_path:
+                self.current_model_path = file_path
+                log_message(f"YOLO model changed: {file_path}", "INFO")
+                return True
         except Exception as e:
-            QMessageBox.critical(self, "Hata", f"Model değiştirme hatası: {str(e)}")
-            log_message(f"Model change error: {str(e)}", "ERROR")
+            log_message(f"Model selection error: {str(e)}", "ERROR")
+        return False
+
+    def stop_detection(self):
+        """Stop detection thread"""
+        if hasattr(self, 'detection_thread'):
+            self.detection_thread.stop()
+            self.detection_thread.wait()
+            log_message("Detection stopped", "INFO")
+
+    def show_error(self, msg):
+        """Show error message in log only"""
+        log_message(f"Error: {msg}", "ERROR")
+
+    def apply_settings(self):
+        # Kamera değişikliği kontrolü
+        if hasattr(self, 'detection_thread'):
+            self.detection_thread.conf_threshold = self.confidence_threshold
+        
+        # Tema değişikliği
+        apply_style_sheet(self, "dark" if self.settings["dark_mode"] else "light")
+        
+        # Ses ayarları değişikliği
+        if not self.settings["sound_enabled"]:
+            self.sound_thread.queue.clear()
+        
+        # Otomatik kayıt değişikliği
+        if self.recording and not self.settings["recording_enabled"]:
+            self.toggle_recording()  # Kaydı durdur
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
